@@ -54,7 +54,9 @@
 }
 
 @media (max-width: 991px) {
-	.header{padding: 15px 0;}
+	.header{
+		&__content{padding: 12px 0;}
+	}
 
 	.header-mob-contact-wrap{
 		display: flex;
@@ -63,7 +65,7 @@
 	}
 
 	.header-mob-contact{
-		&:not(:last-child){margin-right: 50px;}
+		&:not(:last-child){margin-right: 30px;}
 
 		&__btn{
 			cursor: pointer;
@@ -73,6 +75,7 @@
 				transition: all 0.2s ease 0s;}
 		}
 
+		&__btn.active{cursor: auto;}
 		&__btn.active .icon{fill: #dbdbdb;}
 
 		&__popup{
@@ -121,4 +124,6 @@
 	.header{
 		&__logo img{max-width: 126px;}
 	}
+
+	.main-menu-wrap{display: none;}
 }

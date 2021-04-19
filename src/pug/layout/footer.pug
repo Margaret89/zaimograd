@@ -30,14 +30,14 @@ footer.footer
 										a.footer-contact__phone(href="tel:+78002507271") 8(800)250-72-71
 									.footer-contact__note Бесплатная горячая линия.
 
-							.footer-contact.d-none.d-md-inline-flex
+							.footer-contact
 								.footer-contact__icon
 									+svg('ic-mail','ic-mail', '26', '21')
 								.footer-contact__content
 									.footer-contact__text
 										a.footer-contact__mail(href="mailto:rostfinance@mail.ru") rostfinance@mail.ru
 
-				.footer-middle
+				.footer-middle.d-none.d-md-flex
 					ul.footer-menu
 						-
 							var list=[
@@ -61,21 +61,21 @@ footer.footer
 						| 
 						a(href="#") Подробнее о политике
 
-				//- .footer-polit.d-md-none
-				//- 	p © 2001-2021. АО «Альфа-Банк», официальный сайт. Генеральная лицензия Банка России № 1326 от 16 января 2015 г. АО АЛЬФА-БАНК 
+				.footer-polit.d-md-none
+					p © 2001-2021. АО «Альфа-Банк», официальный сайт. Генеральная лицензия Банка России № 1326 от 16 января 2015 г. АО АЛЬФА-БАНК 
 
-				//- 	.more-text.js-more-text
-				//- 		.more-text__top
-				//- 			.more-text__action.js-more-text-action
-				//- 				.more-text__label.js-more-text-label(data-text="Свернуть") Читать подробнее
-				//- 				.more-text__btn
-				//- 					+svg('ic-plus','ic-plus', '12', '12')
+					.more-text.js-more-text
+						.more-text__top
+							.more-text__action.js-more-text-action
+								.more-text__label.js-more-text-label(data-text="Свернуть") Читать подробнее
+								.more-text__btn
+									+svg('ic-plus','ic-plus', '12', '12')
 
-				//- 		.more-text__content.js-more-text-content
-				//- 			p Настоящим я, свободно, своей волей и в своем интересе в соответствии с положениями Федерального закона от 27.07.2006 г. № 152-ФЗ «О персональных данных» (с&nbsp;изменениями и дополнениями) даю свое согласие: 
+						.more-text__content.js-more-text-content
+							p Настоящим я, свободно, своей волей и в своем интересе в соответствии с положениями Федерального закона от 27.07.2006 г. № 152-ФЗ «О персональных данных» (с&nbsp;изменениями и дополнениями) даю свое согласие: 
 					
-				//- 		.more-text__bottom
-				//- 			a(href="#") Политика конфиденциальности
+						.more-text__bottom
+							a(href="#") Политика конфиденциальности
 
 .move-up.js-move-up
 	+svg('ic-arrow-up','ic-arrow-up', '14', '8')

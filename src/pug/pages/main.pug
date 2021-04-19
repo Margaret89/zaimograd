@@ -70,6 +70,7 @@ block content
 								if(item.arr != 'false')
 									.step-list__arr
 										+svg('ic-arrow','ic-arrow', '39', '37')
+	
 	section.product-wrap.bg-light-blue
 		.container
 			.row
@@ -86,7 +87,7 @@ block content
 						]
 
 					each item in list
-						.col-4
+						.col-sm-6.col-lg-4
 							.product-item
 								a(href="#").product-item__img-wrap
 									.product-item__img(style="background-image: url(assets/img/"+item.img+")")
@@ -176,7 +177,7 @@ block content
 						]
 
 					each item in list
-						.col-4
+						.col-sm-6.col-lg-4
 							.article-item
 								a(href="#").article-item__img-wrap
 									.article-item__img(style="background-image: url(assets/img/"+item.img+")")

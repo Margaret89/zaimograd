@@ -102,3 +102,39 @@
 		@include font(normal, 300, 1.4rem, 1.2, #c5c5c5);
 	}
 }
+
+
+@media (max-width: 991px) {
+	.article-wrap{margin: 60px 0;}
+}
+
+@media (max-width: 767px) {
+	.article-wrap{
+		margin: 40px 0;
+
+		.h1, h1{margin-bottom: 3rem;}
+	}
+
+	.article-item{
+		&__img-wrap{height: 140px;}
+
+		&__title{
+			font-size: 1.6rem;
+			margin-bottom: 15px;
+		}
+
+		&__text, &__more-link{font-size: 1.4rem;}
+		&__more{margin-top: 14px;}
+		&__content{padding: 26px 17px 25px;}
+
+		&__date, &__label{font-size: 1.2rem;}
+		&__date{margin-bottom: 12px;}
+	}
+
+	.article-list{
+		&__more{
+			text-align: left;
+			margin-top: 10px;
+		}
+	}
+}

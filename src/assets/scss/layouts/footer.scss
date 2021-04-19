@@ -72,6 +72,7 @@
 .footer-middle{
 	display: flex;
 	justify-content: space-between;
+	align-items: flex-start;
 	padding: 48px 0 36px;
 	border-top: 1px solid rgba(255,255,255,0.2);
 
@@ -83,7 +84,6 @@
 	.footer-menu{
 		flex: 0 0 385px;
 		margin-right: 50px;
-		margin-top: -4px;
 	}
 }
 
@@ -102,6 +102,7 @@
 	&__item{
 		width: calc(50% - 30px);
 		margin-bottom: 14px;
+		line-height: 1.2;
 	}
 
 	&__link{
@@ -120,50 +121,66 @@
 	letter-spacing: 0.14px;
 }
 
+@media (max-width: 1279px) {
+	.footer-top{
+		&__logo{flex: 0 0 300px;}
+	}
 
+	.footer-contact{
+		&__content{max-width: 300px;}
+	}
 
-// @media (max-width: 991px) {
-// 	.footer-contact-wrap{flex-wrap: wrap;}
-// }
+	.footer-middle{
+		.footer-menu{flex: 0 0 310px;}
+	}
+}
 
-// @media (max-width: 767px) {
-// 	.footer{padding: 30px 0;}
-	
-// 	.footer-top{
-// 		display: block;
-// 		margin: 0;
-// 		padding: 0;
+@media (max-width: 991px) {
+	.footer-top{
+		&__logo{flex: 0 0 200px;}
+	}
 
-// 		&__logo{
-// 			margin: 0 0 30px;
-// 			padding: 14px 18px;
+	.footer-contact{
+		&__content{max-width: 200px;}
+	}
 
-// 			img{max-width: 127px;}
-// 		}
-// 	}
+	.footer-middle{
+		.footer-menu{
+			flex: 0 0 230px;
+			margin-right: 30px;
+		}
+	}
+}
 
-// 	.footer-contact-wrap{
-// 		border-top: 1px solid rgba(255,255,255,0.2);
-// 		padding: 10px 0;
-// 	}
+@media (max-width: 767px) {
+	.footer-top{
+		display: block;
+		margin-left: 0;
+		margin-right: 0;
+		padding: 35px 0 26px;
 
-// 	.footer-contact{
-// 		display: block;
-// 		margin-left: 0;
-// 		margin-right: 0;
+		&__logo{
+			max-width: 165px;
+			margin: 0;
+		}
+	}
 
-// 		&__icon{
-// 			display: none;
-// 		}
+	.footer-contact-wrap{
+		display: block;
+		margin-top: 37px;
+		border-top: 1px solid rgba(255,255,255,0.2);
+	}
 
-// 		&__phone{font-size: 1.8rem;}
-// 		&__note{margin-top: 4px;}
-// 	}
+	.footer-contact{
+		margin: 20px 0;
 
-// 	.footer-polit{
-// 		font-size: 1.2rem;
-// 		line-height: 1.67;
-// 		padding: 0;
-// 		border-top: 0;
-// 	}
-// }
+		&__text{line-height: 1.4;}
+	}
+
+	.footer-polit{
+		font-size: 1.2rem;
+		line-height: 1.67;
+		padding: 0;
+		border-top: 0;
+	}
+}

@@ -120,6 +120,8 @@
 }
 
 @media (max-width: 991px) {
+	.steps{margin: 80px 0;}
+	
 	.step-list{
 		&__item{width: calc(50% - 40px);}
 	}

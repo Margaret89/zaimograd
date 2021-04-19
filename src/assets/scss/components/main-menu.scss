@@ -58,3 +58,32 @@
 		transform: none;
 	}
 }
+
+@media (max-width: 991px) {
+	.main-menu{
+		&__link{font-size: 1.6rem;}
+	}
+}
+
+@media (max-width: 767px) {
+	.main-menu-wrap{
+		background: #fff;
+		position: absolute;
+		top: 100%;
+		left: 0px;
+		width: 100%;
+		z-index: 10;
+	}
+
+	.main-menu{
+		display: block;
+		padding: 15px 0;
+		
+		&__line{display: none;}
+		&__item:first-child{margin-left: 0;}
+		&__item:last-child{margin-right: 0;}
+		&__item{padding: 10px 0;}
+		&__item:not(:last-child){margin-bottom: 10px;}
+		&__item.active &__link::before{bottom: -10px;}
+	}
+}

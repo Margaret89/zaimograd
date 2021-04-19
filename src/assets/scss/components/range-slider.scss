@@ -80,6 +80,9 @@
 
 		.slider.slider-horizontal .slider-track{margin-top: 0;}
 
-		&__scale{font-size: 1.2rem;}
+		&__scale{
+			font-size: 1.2rem;
+			margin-top: 14px;
+		}
 	}
 }

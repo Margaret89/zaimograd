@@ -88,3 +88,35 @@
 		margin-left: 10px;
 	}
 }
+
+@media (max-width: 991px) {
+	.product-wrap{padding: 50px 0;}
+}
+
+@media (max-width: 767px) {
+	.product-wrap{
+		padding: 45px 0;
+
+		.h1, h1{margin-bottom: 3rem;}
+	}
+
+	.product-item{
+		&__img-wrap{height: 140px;}
+
+		&__title{
+			font-size: 1.6rem;
+			margin-bottom: 15px;
+		}
+
+		&__text, &__more-link{font-size: 1.4rem;}
+		&__more{margin-top: 14px;}
+		&__content{padding: 21px 17px 25px;}
+	}
+
+	.product-list{
+		&__more{
+			text-align: left;
+			margin-top: 10px;
+		}
+	}
+}

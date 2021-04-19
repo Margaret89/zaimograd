@@ -4,6 +4,16 @@
 	margin-top: 117px;
 }
 
+@media (max-width: 991px) {
+	.faq-wrap{
+		margin-top: 60px;
+		padding: 50px 0;
+	}
+}
+
 @media (max-width: 767px) {
-	.faq-wrap{padding: 52px 0 36px;}
+	.faq-wrap{
+		margin-top: 40px;
+		padding: 50px 0 36px;
+	}
 }

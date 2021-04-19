@@ -55,7 +55,7 @@
 			padding: 0;
 		}
 
-		&__item{padding-bottom: 20px;}
+		&__item{padding-bottom: 18px;}
 
 		&__item:not(:last-child){
 			border-bottom: 1px solid $color-grey-light;
@@ -65,7 +65,7 @@
 
 	.form-calc-res{
 		display: block;
-		padding: 24px 0 0;
+		padding: 27px 0 0;
 		border-left: 0;
 		border-top: 1px solid $color-grey-light;
 		text-align: left;
