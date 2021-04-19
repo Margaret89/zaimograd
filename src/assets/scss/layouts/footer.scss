@@ -1,0 +1,169 @@
+.footer{
+	background: #2e3740;
+	color: #f2f2f2;
+
+	.icon{fill: #f2f2f2;}
+}
+
+.footer-top{
+	display: flex;
+	justify-content: space-between;
+	padding: 40px 0 26px;
+	margin-left: -15px;
+	margin-right: -15px;
+
+	&__logo{
+		flex: 0 0 400px;
+		margin: 15px;
+	}
+}
+
+.footer-contact-wrap{
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.footer-contact{
+	display: flex;
+	margin: 15px;
+
+	&__icon{
+		flex: 0 0 26px;
+		text-align: center;
+		margin-right: 7px;
+
+		.icon{fill: $color-green;}
+	}
+
+	&__content{max-width: 400px}
+
+	&__text{
+		@include font(normal, 300, 1.4rem, 1.7, #f2f2f2);
+		letter-spacing: 0.2px;
+	}
+
+	&__phone{
+		display: inline-block;
+		font-size: 2rem;
+		font-weight: bold;
+		color: #f2f2f2;
+		text-decoration: none;
+		margin-top: -4px;
+		transition: all 0.2s ease 0s;
+	}
+
+	&__phone:hover{color: $color-green;}
+
+	&__note{
+		@include font(normal, 300, 1.2rem, 1.2, #f2f2f2);
+	}
+
+	&__mail{
+		font-weight: bold;
+		color: #fff;
+		text-decoration: none;
+		transition: all 0.2s ease 0s;
+	}
+
+	&__mail:hover{color: $color-green;}
+}
+
+.footer-middle{
+	display: flex;
+	justify-content: space-between;
+	padding: 48px 0 36px;
+	border-top: 1px solid rgba(255,255,255,0.2);
+
+	&__text{
+		width: 100%;
+		@include font(normal, normal, 1.2rem, 1.83, #fafafa);
+	}
+
+	.footer-menu{
+		flex: 0 0 385px;
+		margin-right: 50px;
+		margin-top: -4px;
+	}
+}
+
+.footer-menu{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	&,
+	&__item{
+		@include reset-list;
+	}
+
+	&__item::before{display: none;}
+
+	&__item{
+		width: calc(50% - 30px);
+		margin-bottom: 14px;
+	}
+
+	&__link{
+		@include font(normal, normal, 1.4rem, 1.2, #f2f2f2);
+		text-decoration: none;
+		transition: color 0.2s ease 0s;
+	}
+
+	&__link:hover{color: $color-green;}
+}
+
+.footer-polit{
+	padding: 40px 0;
+	border-top: 1px solid rgba(255,255,255,0.2);
+	font-size: 1.2rem;
+	letter-spacing: 0.14px;
+}
+
+
+
+// @media (max-width: 991px) {
+// 	.footer-contact-wrap{flex-wrap: wrap;}
+// }
+
+// @media (max-width: 767px) {
+// 	.footer{padding: 30px 0;}
+	
+// 	.footer-top{
+// 		display: block;
+// 		margin: 0;
+// 		padding: 0;
+
+// 		&__logo{
+// 			margin: 0 0 30px;
+// 			padding: 14px 18px;
+
+// 			img{max-width: 127px;}
+// 		}
+// 	}
+
+// 	.footer-contact-wrap{
+// 		border-top: 1px solid rgba(255,255,255,0.2);
+// 		padding: 10px 0;
+// 	}
+
+// 	.footer-contact{
+// 		display: block;
+// 		margin-left: 0;
+// 		margin-right: 0;
+
+// 		&__icon{
+// 			display: none;
+// 		}
+
+// 		&__phone{font-size: 1.8rem;}
+// 		&__note{margin-top: 4px;}
+// 	}
+
+// 	.footer-polit{
+// 		font-size: 1.2rem;
+// 		line-height: 1.67;
+// 		padding: 0;
+// 		border-top: 0;
+// 	}
+// }

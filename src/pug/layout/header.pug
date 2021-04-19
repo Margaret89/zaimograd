@@ -1,0 +1,104 @@
+header.header
+	.container
+		.row
+			.col-12
+				.header__content
+					.header__logo
+						a(href="/")
+							img(src="assets/img/logo.svg", alt="")
+
+					
+					.header-contact.d-none.d-lg-inline-flex
+						.header-contact__icon
+							+svg('ic-call','ic-call', '20', '20')
+							
+						.header-contact__content
+							.header-contact__label Бесплатная горячая линия.
+							.header-contact__text
+								a.header-contact__phone(href="tel:+78002507271") 8(800)250-72-71
+
+					.header-contact.d-none.d-lg-inline-flex
+						.header-contact__icon
+							+svg('ic-mail','ic-mail', '26', '21')
+
+						.header-contact__content
+							.header-contact__label E-Mail для заявлений клиентов:
+
+					.header-contact.d-none.d-lg-inline-flex
+						.header-contact__icon
+							+svg('ic-mail','ic-mail', '26', '21')
+
+						.header-contact__content
+							.header-contact__text
+								a(href="mailto:usurer2012@bk.ru") usurer2012@bk.ru
+
+
+					.header-mob-contact-wrap.d-lg-none
+						.header-mob-contact.js-header-mob-contact
+							.header-mob-contact__btn.js-header-mob-contact-btn
+								+svg('ic-call','ic-call', '23', '23')
+
+							.header-mob-contact__popup.js-header-mob-contact-popup
+								.container
+									.row
+										.col-12
+											.header-mob-contact__close.js-header-mob-contact-close
+												+svg('ic-close','ic-close', '12', '12')
+
+											.header-contact
+												.header-contact__icon
+													+svg('ic-call','ic-call', '20', '20')
+													
+												.header-contact__content
+													.header-contact__label Бесплатная горячая линия.
+													.header-contact__text
+														a.header-contact__phone(href="tel:+78002507271") 8(800)250-72-71
+
+						.header-mob-contact.js-header-mob-contact
+							.header-mob-contact__btn.js-header-mob-contact-btn
+								+svg('ic-mail','ic-mail', '26', '21')
+
+							.header-mob-contact__popup.js-header-mob-contact-popup
+								.container
+									.row
+										.col-12
+											.header-mob-contact__close.js-header-mob-contact-close
+												+svg('ic-close','ic-close', '12', '12')
+
+											.header-contact
+												.header-contact__icon
+													+svg('ic-mail','ic-mail', '26', '21')
+
+												.header-contact__content
+													.header-contact__label E-Mail для заявлений клиентов:
+													.header-contact__text
+														a(href="mailto:zayavleniya@rostfinance.com") zayavleniya@rostfinance.com
+
+											.header-contact
+												.header-contact__icon
+													+svg('ic-mail','ic-mail', '26', '21')
+
+												.header-contact__content
+													.header-contact__text
+														a(href="mailto:usurer2012@bk.ru") usurer2012@bk.ru
+
+	nav.main-menu-wrap
+		.container
+			.row
+				.col-12
+					ul.main-menu
+						-
+							var list=[
+								{text:'Новости и акции', status:'active'},
+								{text:'Продукты и тарифы'},
+								{text:'FAQ'},
+								{text:'О компании'},
+								{text:'Контакты', last:'true'},
+							]
+
+						each item in list
+							li.main-menu__item(class=item.status=='active'?'active':'')
+								a(href="#").main-menu__link= item.text
+
+							if(item.last != 'true')
+								li.main-menu__line

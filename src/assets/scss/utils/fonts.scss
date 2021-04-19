@@ -1,0 +1,95 @@
+@font-face {
+	font-family: 'Formular';
+	src: url('#{$path-fonts}/Formular/Formular-Italic.eot');
+	src: local('Formular Italic'), local('Formular-Italic'),
+		url('#{$path-fonts}/Formular/Formular-Italic.eot?#iefix') format('embedded-opentype'),
+		url('#{$path-fonts}/Formular/Formular-Italic.woff2') format('woff2'),
+		url('#{$path-fonts}/Formular/Formular-Italic.woff') format('woff'),
+		url('#{$path-fonts}/Formular/Formular-Italic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Formular';
+	src: url('#{$path-fonts}/Formular/Formular-LightItalic.eot');
+	src: local('Formular Light Italic'), local('Formular-LightItalic'),
+		url('#{$path-fonts}/Formular/Formular-LightItalic.eot?#iefix') format('embedded-opentype'),
+		url('#{$path-fonts}/Formular/Formular-LightItalic.woff2') format('woff2'),
+		url('#{$path-fonts}/Formular/Formular-LightItalic.woff') format('woff'),
+		url('#{$path-fonts}/Formular/Formular-LightItalic.ttf') format('truetype');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Formular';
+	src: url('#{$path-fonts}/Formular/Formular-Light.eot');
+	src: local('Formular Light'), local('Formular-Light'),
+		url('#{$path-fonts}/Formular/Formular-Light.eot?#iefix') format('embedded-opentype'),
+		url('#{$path-fonts}/Formular/Formular-Light.woff2') format('woff2'),
+		url('#{$path-fonts}/Formular/Formular-Light.woff') format('woff'),
+		url('#{$path-fonts}/Formular/Formular-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Formular';
+	src: url('#{$path-fonts}/Formular/Formular.eot');
+	src: local('Formular'),
+		url('#{$path-fonts}/Formular/Formular.eot?#iefix') format('embedded-opentype'),
+		url('#{$path-fonts}/Formular/Formular.woff2') format('woff2'),
+		url('#{$path-fonts}/Formular/Formular.woff') format('woff'),
+		url('#{$path-fonts}/Formular/Formular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Formular';
+	src: url('#{$path-fonts}/Formular/Formular-BoldItalic.eot');
+	src: local('Formular Bold Italic'), local('Formular-BoldItalic'),
+		url('#{$path-fonts}/Formular/Formular-BoldItalic.eot?#iefix') format('embedded-opentype'),
+		url('#{$path-fonts}/Formular/Formular-BoldItalic.woff2') format('woff2'),
+		url('#{$path-fonts}/Formular/Formular-BoldItalic.woff') format('woff'),
+		url('#{$path-fonts}/Formular/Formular-BoldItalic.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Formular';
+	src: url('#{$path-fonts}/Formular/Formular-Bold.eot');
+	src: local('Formular Bold'), local('Formular-Bold'),
+		url('#{$path-fonts}/Formular/Formular-Bold.eot?#iefix') format('embedded-opentype'),
+		url('#{$path-fonts}/Formular/Formular-Bold.woff2') format('woff2'),
+		url('#{$path-fonts}/Formular/Formular-Bold.woff') format('woff'),
+		url('#{$path-fonts}/Formular/Formular-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Formular';
+	src: url('#{$path-fonts}/Formular/Formular-MediumItalic.eot');
+	src: local('Formular Medium Italic'), local('Formular-MediumItalic'),
+		url('#{$path-fonts}/Formular/Formular-MediumItalic.eot?#iefix') format('embedded-opentype'),
+		url('#{$path-fonts}/Formular/Formular-MediumItalic.woff2') format('woff2'),
+		url('#{$path-fonts}/Formular/Formular-MediumItalic.woff') format('woff'),
+		url('#{$path-fonts}/Formular/Formular-MediumItalic.ttf') format('truetype');
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Formular';
+	src: url('#{$path-fonts}/Formular/Formular-Medium.eot');
+	src: local('Formular Medium'), local('Formular-Medium'),
+		url('#{$path-fonts}/Formular/Formular-Medium.eot?#iefix') format('embedded-opentype'),
+		url('#{$path-fonts}/Formular/Formular-Medium.woff2') format('woff2'),
+		url('#{$path-fonts}/Formular/Formular-Medium.woff') format('woff'),
+		url('#{$path-fonts}/Formular/Formular-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}

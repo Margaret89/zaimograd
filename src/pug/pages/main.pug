@@ -1,0 +1,255 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Главная';
+
+block content
+	section.top-block
+		.container
+			.row
+				.col-12
+					.top-block__info
+						.top-block__title Займы онлайн в&nbsp;Северодвинске
+						.top-block__text.d-none.d-md-block Получить деньги без справок и поручителей в&nbsp;Северодвинске и Архангельске.
+						.top-block__label.d-none.d-md-block Без проверок, без коллекторов, одобрение 99,9%!
+
+					form.form-calc
+						.form-calc__fields
+							.form-calc__item
+								.range.js-range
+									.range__top
+										span.range__title Сумма займа: 
+										span.range__val <span class="js-range-val" data-text="руб."></span>
+									input(type='text' name='prices' data-provide='slider' data-slider-min='1000' data-slider-max='30000' data-slider-step='1' data-slider-value='5000' data-slider-tooltip="hide" class="js-range-input")
+
+									.range__scale
+										.range__min.js-range-min
+										.range__max.js-range-max
+
+							.form-calc__item
+								.range.js-range(data-note='true')
+									.range__top
+										span.range__title Срок займа: 
+										span.range__val <span class="js-range-val" data-text="день"></span>
+									input(type='text' name='days' data-provide='slider' data-slider-min='10' data-slider-max='32' data-slider-step='1' data-slider-value='25' data-slider-tooltip="hide" class="js-range-input" )
+
+									.range__scale
+										.range__min.js-range-min
+										.range__max.js-range-max
+
+						.form-calc-res
+							.form-calc-res__content
+								.form-calc-res__label Всего к&nbsp;возврату
+								.form-calc-res__price 5170
+									span.form-calc-res__currency руб
+
+							input.btn(type="submit", value="Продолжить")
+
+	section.steps
+		.container
+			.row
+				.col-12
+					.h1 Как оформить займ?
+
+					.step-list.js-step-list
+						-
+							var list=[
+								{icon:'ic-hand', icon_width:'18', icon_height:'35', text:'Оставьте онлайн-заявку'},
+								{icon:'ic-compass', icon_width:'30', icon_height:'30', icon_color:'light-red', text:'Дождитесь одобрения'},
+								{icon:'ic-copy', icon_width:'21', icon_height:'28', icon_color:'yellow', text:'Подпишите договор'},
+								{icon:'ic-money', icon_width:'38', icon_height:'26', icon_color:'dark-green', text:'Получите деньги', arr:'false'},
+							]
+
+						each item in list
+							.step-list__item.js-step-list-item(class=item.animate?'animate':'')
+								.step-list__icon(class=item.icon_color?'step-list__icon_'+item.icon_color:'')
+									+svg(item.icon, item.icon, item.icon_width, item.icon_height)
+
+								.step-list__text= item.text
+
+								if(item.arr != 'false')
+									.step-list__arr
+										+svg('ic-arrow','ic-arrow', '39', '37')
+	section.product-wrap.bg-light-blue
+		.container
+			.row
+				.col-12
+					.h1 Продукты и тарифы
+
+			.product-list
+				.row
+					-
+						var list=[
+							{img:'product1.jpg', title:'Для новых клиентов', text:'Берите небольшую сумму на короткий срок'},
+							{img:'product2.jpg', title:'Для действующих', text:'Берите займы постоянно и получайте лучшие условия'},
+							{img:'product3.jpg', title:'Заём под ПТС', text:'Берите до 500 000 рублей под залог авто: ПТС и машина остаются у вас'},
+						]
+
+					each item in list
+						.col-4
+							.product-item
+								a(href="#").product-item__img-wrap
+									.product-item__img(style="background-image: url(assets/img/"+item.img+")")
+								
+								.product-item__content
+									.product-item__main
+										.product-item__title
+											a(href="#")= item.title
+										.product-item__text= item.text
+
+									.product-item__more
+										a(href="#").product-item__more-link Подробнее
+
+
+				.row
+					.col-12
+						.product-list__more
+							a(href="#").btn.btn_border.btn_dot
+								span Все продукты
+
+	section.text-block
+		.container
+			.row
+				.col-12
+					.h1 Где взять деньги в долг? н1
+					p Микрозаём — это небольшой кредит наличными, выдаваемый микрокредитными организациями. Больше всего такой вид займа подходит для потребительских нужд, когда деньги требуются срочно и нет возможности у кого-либо взять в долг до зарплаты. Микрозаймы выдаются на непродолжительные сроки и на максимально упрощенных условиях.
+
+					h2 выдача денег в долг до зарплаты Н2
+					p Микрозаём — это небольшой кредит наличными, выдаваемый микрокредитными организациями. Больше всего такой вид займа подходит для потребительских нужд, когда деньги требуются срочно и нет возможности у кого-либо взять в долг до зарплаты. Микрозаймы выдаются на непродолжительные сроки и на максимально упрощенных условиях.
+
+					h3 Лояльные требования Н3
+					p Микрозаём — это небольшой кредит наличными, выдаваемый микрокредитными организациями. Больше всего такой вид займа подходит для потребительских нужд, когда деньги требуются срочно и нет возможности у кого-либо взять в долг до зарплаты. Микрозаймы выдаются на непродолжительные сроки и на максимально упрощенных условиях.
+
+					h3 Выгодный займ – лучшее решение всех финансовых вопросов  Н3
+					p Главная цель обращения клиента в компанию – быстро получить необходимую сумму под низкий процент. Предпосылки возникновения потребности в деньгах различны:
+
+					ul
+						li поехать в путешествие заграницу;
+						li пройти курс лечения в санатории;
+						li поехать в путешествие заграницу;
+						li открыть небольшой бизнес;
+						li сделать ремонт.
+
+	section.review-wrap.bg-light-blue
+		.container
+			.row
+				.col-12
+					.review-wrap__top
+						.h1 Отзывы
+
+						.review-slider-arr.js-review-slider-arr.d-none.d-md-inline-flex
+
+		.review-slider.js-review-slider
+			-
+				var list=[
+					{img:'author1.jpg', name:'Антонина Васильевна Ильина', text:'Выручили во время неотложной ситуации. Быстрое рассмотрение, моментальный перевод.'},
+					{img:'author2.jpg', name:'Иван Андреевич Иванов', text:'Срочно понадобились деньги. Оформили и одобрили очень быстро без лишних проблем и заморочек. Качественное обслуживание.'},
+					{img:'author3.jpg', name:'Александра Ильинишна Немоляева', text:'Беру деньги не первый раз. Нахожусь в декрете и кредиты не дают. Но срочно понадобилось деньги, одобрили. Вернула в срок и пользовалась ещё несколько раз. '},
+					{img:'author2.jpg', name:'Иван Андреевич Иванов', text:'Срочно понадобились деньги. Оформили и одобрили очень быстро без лишних проблем и заморочек. Качественное обслуживание.'},
+					{img:'author3.jpg', name:'Александра Ильинишна Немоляева', text:'Беру деньги не первый раз. Нахожусь в декрете и кредиты не дают. Но срочно понадобилось деньги, одобрили. Вернула в срок и пользовалась ещё несколько раз. '},
+					{img:'author1.jpg', name:'Антонина Васильевна Ильина', text:'Выручили во время неотложной ситуации. Быстрое рассмотрение, моментальный перевод.'},
+					{img:'author2.jpg', name:'Иван Андреевич Иванов', text:'Срочно понадобились деньги. Оформили и одобрили очень быстро без лишних проблем и заморочек. Качественное обслуживание.'},
+				]
+
+			each item in list
+				.review-slider__item
+					.review-slider__top
+						.review-slider__img(style="background-image: url(assets/img/"+item.img+")")
+						.review-slider__name= item.name
+
+					.review-slider__text= item.text
+
+	section.article-wrap
+		.container
+			.row
+				.col-12
+					.h1 Новости и акции
+
+			.article-list
+				.row
+					-
+						var list=[
+							{img:'article1.jpg', date:'01.03.2021', title:'Весенний розыгрыш!', text:'Дарим 43 подарка', label:'Новость'},
+							{img:'article2.jpg', date:'01.03.2021', title:'Приходи с договором конкурента — сделаем скидку!', text:'Представляем заём «С договором конкурента»', label:'Акция'},
+							{img:'article3.jpg', date:'01.03.2021', title:'Акция «День рождения»', text:'Получите скидку на заём в День рождения', label:'Новость'},
+
+						]
+
+					each item in list
+						.col-4
+							.article-item
+								a(href="#").article-item__img-wrap
+									.article-item__img(style="background-image: url(assets/img/"+item.img+")")
+								
+								.article-item__content
+									.article-item__main
+										.article-item__date= item.date
+
+										.article-item__title
+											a(href="#")= item.title
+										.article-item__text= item.text
+
+									.article-item__more
+										a(href="#").article-item__more-link Подробнее
+										span.article-item__label= item.label
+
+
+				.row
+					.col-12
+						.article-list__more
+							a(href="#").btn.btn_border.btn_dot
+								span Все материалы
+	
+	section.faq-wrap.bg-light-blue
+		.container
+			.row
+				.col-12
+					.h1 FAQ
+
+					-
+						var list=[
+							{question:'Вы можете получить кредит, если', answer:'Единственно верное решение материальных проблем – восполнить нехватку денежных средств. Проблемы бывают микро и макро масштаба. Проверенный план действий, разработанный специалистами компании, помогает устранить трудности, превращая их в возможности. «Центрофинанс» предлагает несколько вариантов микрозаймов, применимых для конкретной финансовой задачи'},
+							{question:'На какие цели можно взять кредит?', answer:'Текст'},
+							{question:'На какие цели можно взять кредит?', answer:'Текст'},
+							{question:'На какие цели можно взять кредит?', answer:'Текст'},
+						]
+
+					each item in list
+						.unwrap-block.js-unwrap-block
+							.unwrap-block__head.js-unwrap-head
+								.unwrap-block__title= item.question
+								.unwrap-block__btn.js-unwrap-block-btn
+									+svg('ic-plus','ic-plus', '18', '18')
+									+svg('ic-minus','ic-minus', '18', '2')
+
+							.unwrap-block__content.js-unwrap-content
+								.unwrap-block__subtitle Ответ:
+								p= item.answer
+
+	section.mark-wrap
+		.container
+			.row
+				.col-12
+					.h1 Рейтинг компании
+
+			.row
+				-
+					var list=[
+						{logo:'ya.jpg', num:'4.7', text:'Оценок : 10'},
+						{logo:'zoon.jpg', num:'4.7', text:'Оценок : 10'},
+						{logo:'yahoo.jpg', num:'4.7', text:'Оценок : 10'},
+					]
+
+				each item in list
+					.col-md-6.col-lg-4
+						.mark
+							.mark__icon
+								img(src="assets/img/"+item.logo, alt="")
+							.mark__content
+								.mark__rating
+									.mark__num= item.num 
+
+									.rating
+										.rating__content(style="width:76%")
+
+								.mark__text= item.text

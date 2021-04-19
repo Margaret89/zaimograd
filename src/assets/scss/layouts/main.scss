@@ -1,0 +1,232 @@
+html,
+body{
+	background: #fff;
+	font-family: $font-site;
+	@include font(normal, 300, 10px, 1.75, $color-text);
+	box-sizing:border-box;
+	min-height:100%;
+}
+
+body{font-size: 1.6rem;}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+	font-size: inherit;
+	font-family: inherit;
+}
+
+img{max-width: 100%;}
+
+a{
+	color: $color-green;
+	text-decoration: underline;
+}
+
+a:hover{text-decoration: none;}
+
+p{
+	padding: 0;
+	margin-bottom: 4rem;
+}
+
+h1,.h1,
+h2,.h2,
+h3,.h3,
+h4,.h4,
+h5,.h5
+{
+	line-height: 1.4;
+	color: $color-text;
+}
+
+h1,.h1{
+	font-size: 3.8rem;
+	font-weight: bold;
+	margin-bottom: 5.2rem;
+}
+
+h2,.h2{
+	font-size: 2.6rem;
+	font-weight: bold;
+	margin-bottom: 3rem;
+}
+
+h3,.h3{
+	font-size: 2rem;
+	margin-bottom: 2rem;
+}
+
+h4,.h4{
+	font-size: 1.8rem;
+	margin-bottom: 1.8rem;
+}
+
+h5,.h5{
+	font-size: 1.6rem;
+	margin-bottom: 1rem;
+}
+
+ul, ol{list-style-position: inside;}
+
+p+h2, p+.h2{margin-top: 5.8rem;}
+
+ul li{
+	position: relative;
+	list-style: none;
+
+	&::before{
+		content: '';
+		display: inline-block;
+		vertical-align: middle;
+		width: 4px;
+		height: 4px;
+		border-radius: 50%;
+		background: $color-green-def;
+		margin-right: 10px;
+	}
+}
+
+li{margin-bottom: 12px;}
+
+.wrapper{
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	width: 100%;
+	margin: 0 auto;
+}
+
+main{
+	flex: 1 1 auto;
+	padding-bottom: 76px;
+}
+
+.btn,
+input[type="submit"].btn,
+button.btn{
+	display: inline-block;
+	height: 4.6rem;
+	background: $color-red;
+	border: 0;
+	outline: 0;
+	border-radius: 2.3rem;
+	@include font(normal, 500, 1.4rem, 4.4rem, #fff);
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	padding: 0 32px;
+	cursor: pointer;
+	transition: all 0.2s ease 0s;
+}
+
+.btn:hover,
+input[type="submit"].btn:hover,
+button.btn:hover{
+	background: $color-dark-red;
+}
+
+.btn_dot span::after{
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: $color-red;
+	margin-left: 10px;
+	margin-top: -2px;
+	transition: all 0.2s ease 0s;
+}
+
+.btn_border,
+input[type="submit"].btn_border,
+button.btn_border{
+	border: 2px solid $color-red;
+	background: transparent;
+	color: $color-red;
+	line-height: 4.2rem;
+}
+
+.btn_border:hover,
+input[type="submit"].btn_border:hover,
+button.btn_border:hover{
+	border-color: $color-dark-red;
+	background: $color-dark-red;
+	color: #fff;
+}
+
+.btn_border:hover span::after,
+button.btn_border:hover span::after{
+	background: #fff;
+}
+
+
+
+
+.code{
+	background-color: #f7f7f7;
+	border: 1px solid #e1e1e8;
+	color: #d14;
+	padding: 1px 4px;
+	display: inline-block;
+	font-family: monospace, arial;
+	border-radius: 3px;
+}
+
+.text-left{text-align: left !important;}
+.text-center{text-align: center !important;}
+.text-right{text-align: right !important;}
+.text-justify{text-align: justify !important;}
+.text-uppercase{text-transform: uppercase !important;}
+.text-bold {font-weight: 700 !important;}
+
+.bg-light-blue{background: #f9f8ff;}
+
+@media (max-width: 767px) {
+	body{
+		font-size: 1.4rem;
+		line-height: 1.7;
+	}
+
+	body .container{
+		max-width: 100%!important;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	main{padding-bottom: 30px;}
+
+	.btn,
+	input[type="submit"].btn,
+	button.btn{
+		height: 4rem;
+		line-height: 3.8rem;
+	}
+
+	h1, .h1{
+		font-size: 2.4rem;
+		line-height: 1.2;
+		margin-bottom: 3rem;
+	}
+
+	h2, .h2{
+		font-size: 2rem;
+		line-height: 1.2;
+		margin-bottom: 2rem;
+	}
+
+	h3, .h3{
+		font-size: 1.6rem;
+		line-height: 1.2;
+		margin-bottom: 2rem;
+	}
+
+	h4, .h4{font-size: 1.5rem;}
+	h5, .h5{font-size: 1.4rem;}
+
+	p{margin-bottom: 3rem;}
+
+	p + .h2, p + .h3, p + h2, p + h3{margin-top: 3rem;}
+}

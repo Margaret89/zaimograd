@@ -1,0 +1,71 @@
+/*-------------- mark -----------------*/
+.mark-wrap{margin: 115px 0 20px;}
+
+.mark{
+	display: flex;
+	align-items: center;
+	height: calc(100% - 30px);
+	background: #fff;
+	border-radius: 10px;
+	padding: 20px 28px;
+	margin-bottom: 30px;
+	border: 1px solid $color-grey-light;
+
+	&__icon{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 72px;
+		margin-right: 23px;
+	}
+	
+	&__rating{display: flex;}
+
+	&__num{
+		@include font(normal, normal, 1.4rem, 1, $color-text);
+		margin-right: 10px;
+	}
+
+	&__text{
+		@include font(normal, normal, 1.4rem, 1, $color-text);
+		margin-top: 25px;
+	}
+}
+
+.rating{
+	display: inline-block;
+	vertical-align: top;
+	width: 105px;
+	height: 17px;
+	background: url(../img/stars.png) repeat-x 0 0;
+	position: relative;
+
+	&__content{
+		width: 0;
+		height: 100%;
+		background: url(../img/stars.png) repeat-x 0 -20px;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
+@media (max-width: 767px) {
+	.mark-wrap{margin: 40px 0;}
+
+	.mark{
+		height: auto;
+		min-height: 80px;
+		padding: 12px 10px 12px 5px;
+		margin-bottom: 20px;
+
+		&__text{margin-top: 7px;}
+		&__icon img{max-height: 55px;}
+
+		&__icon{
+			flex: 0 0 80px;
+			min-width: 40px;
+			margin-right: 10px;
+		}
+	}
+}
