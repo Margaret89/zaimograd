@@ -15,6 +15,12 @@
 	}
 }
 
+.page-content{
+	background: #fff;
+	padding: 50px 60px;
+	border-radius: 10px;
+}
+
 @media (max-width: 991px) {
 	.page-top{
 		margin-top: 20px;
@@ -23,4 +29,10 @@
 		&__content{display: block;}
 		.filter{margin-left: 0;}
 	}
+
+	.page-content{padding: 25px 30px;}
+}
+
+@media (max-width: 767px) {
+	.page-content{padding: 20px 15px;}
 }
