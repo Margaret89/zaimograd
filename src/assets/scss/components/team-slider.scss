@@ -1,0 +1,63 @@
+/*-------------- team-slider -----------------*/
+.team-slider{
+	&__list{display: none;}
+	&__list.slick-initialized{display: block;}
+	.slick-track{display: flex;}
+
+	.slick-slide{
+		height: auto;
+		margin: 0 12px;
+	}
+
+	.slick-slide > div{height: 100%;}
+
+	&__top{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 60px;
+
+		h1, .h1, h2, .h2{margin-bottom: 0;}
+	}
+
+	&__arr{
+		flex: 0 0 110px;
+		margin-left: 30px;
+
+		.btn-arr:not(:last-child){margin-right: 15px;}
+	}
+
+	&__item{
+		height: 100%;
+		border: 1px solid $color-grey-light;
+		border-radius: 10px;
+		padding: 30px;
+	}
+
+	&__img{
+		display: table;
+		width: 186px;
+		height: 186px;
+		border-radius: 50%;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		margin: 0 auto 10px;
+	}
+
+	&__name{
+		@include font(normal, bold, 1.6rem, 1.5, $color-text);
+	}
+
+	&__post{
+		@include font(normal, 300, 1.4rem, 1.6, $color-text);
+		margin-top: 11px;
+	}
+}
+
+@media (max-width: 767px) {
+	.team-slider{
+		&__item{text-align: center;}
+		.slick-slide{margin: 0;}
+	}
+}

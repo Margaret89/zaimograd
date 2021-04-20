@@ -211,3 +211,34 @@ if($('.js-more-text-action').length){
 		$(this).parents('.js-more-text').find('.js-more-text-content').slideToggle(300);
 	});
 }
+
+// team slider
+if($('.js-team-slider-list').length){
+	$('.js-team-slider-list').slick({
+		slidesToShow: 4,
+		slidesToScroll: 1,
+		appendArrows: $('.js-team-slider-arr'),
+		prevArrow: '<button id="prev" type="button" class="btn-arr"><svg class="icon ic-arrow-left" width="8" height="14"><use xlink:href="assets/sprites/sprite.svg#ic-arrow-left"></use></svg></button>',
+		nextArrow: '<button id="next" type="button" class="btn-arr"><svg class="icon ic-arrow-right" width="8" height="14"><use xlink:href="assets/sprites/sprite.svg#ic-arrow-right"></use></svg></button>',
+		responsive: [
+			{
+				breakpoint: 1240,
+				settings: {
+					slidesToShow: 3,
+				}
+			},
+			{
+				breakpoint: 992,
+				settings: {
+					slidesToShow: 2,
+				}
+			},
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 1,
+				}
+			},
+		]
+	});
+}
