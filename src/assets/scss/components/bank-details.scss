@@ -1,0 +1,49 @@
+/*-------------- bank-details -----------------*/
+.bank-details{
+	.contacts{margin-bottom: 75px;}
+}
+
+.bank-params{
+	border-top: 1px solid $color-grey-light;
+	margin-top: 37px;
+	margin-bottom: 100px;
+
+	&__item{
+		display: flex;
+		justify-content: space-between;
+		padding: 32px 0;
+		border-bottom: 1px solid $color-grey-light;
+		@include font(normal, 300, 1.6rem, 1.625, $color-text);
+	}
+
+	&__title,
+	&__val{
+		width: calc(50% - 15px);
+	}
+
+	&__val{font-weight: bold;}
+}
+
+@media (max-width: 767px) {
+	.bank-details{
+		.contacts{margin-bottom: 35px;}
+	}
+
+	.bank-params{
+		margin-top: 20px;
+		margin-bottom: 40px;
+		
+		&__item{
+			display: block;
+			padding: 15px 0;
+			font-size: 1.4rem;
+		}
+
+		&__title,
+		&__val{
+			width: auto;
+		}
+
+		&__title{margin-bottom: 5px;}
+	}
+}

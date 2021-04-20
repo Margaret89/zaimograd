@@ -1,0 +1,94 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Реквизиты';
+	- var h1 = 'Реквизиты';
+
+block breadcrumb
+	-
+		var breadcrumbs=[
+			{href:'/',name:'Главная'},
+			{href:'#',name:'Реквизиты'},
+		];
+
+	+breadcrumbs(breadcrumbs)
+
+block content
+	section.bank-details
+		.container
+			.row
+				.col-12
+					.page-content
+						.page-content__img
+							img(src="assets/img/bank-details.jpg", alt="")
+
+						.h2 Контакты
+						
+						.contacts
+							.contacts__item
+								.contacts__icon
+									+svg('ic-address','ic-address', '18', '21')
+								.contacts__content 164522, Архангельская область Город Северодвинск, улица Трухинова, дом 6а, пом. 3Н
+
+							.contacts__item
+								.contacts__icon
+									+svg('ic-call','ic-call', '20', '20')
+								.contacts__content
+									a.contacts__phone(href="tel:+78002507271") 8(800)250-72-71
+									.contacts__note Бесплатная горячая линия.
+
+							.contacts__item
+								.contacts__icon
+									+svg('ic-address','ic-address', '18', '21')
+								.contacts__content 164522, Архангельск, улица Трухинова, дом 6а, пом. 3Н
+
+							.contacts__item
+								.contacts__icon
+									+svg('ic-mail','ic-mail', '26', '21')
+								.contacts__content
+									a.contacts__mail(href="mailto:rostfinance@mail.ru") rostfinance@mail.ru
+
+
+						.h2 Реквизиты
+						.bank-params
+							-
+								var list=[
+									{title:'Полное название организации', val:'Общество с ограниченной ответственностью "РОСТ ГРУПП"'},
+									{title:'Уставный капитал', val:'20 000'},
+									{title:'ОКФС', val:'Собственность иностранных граждан и лиц без гражданства'},
+									{title:'ОКОПФ', val:'Общества с ограниченной ответственностью'},
+								]
+							each item in list
+								.bank-params__item
+									.bank-params__title= item.title
+									.bank-params__val= item.val
+
+						.h2 Сведения о государственной регистрации
+						.bank-params
+							-
+								var list=[
+									{title:'Дата регистрации', val:'21.05.2020'},
+									{title:'Регистрирующий орган', val:'Межрайонная инспекция ФНС России №46 по г.Москве'},
+									{title:'Адрес регистрирующего органа', val:'125373,Москва г,Походный проезд, домовладение 3, стр.2'},
+									{title:'Регистрирующий орган, в котором находится регистрационное дело', val:'Межрайонная инспекция Федеральной налоговой службы № 46 по г. Москве'},
+								]
+							each item in list
+								.bank-params__item
+									.bank-params__title= item.title
+									.bank-params__val= item.val
+
+						.h2 Виды деятельности
+						.h3 Основной вид деятельности по ОКВЭД
+						p Торговля оптовая лесоматериалами, строительными материалами и санитарно-техническим оборудованием
+
+						.h3 Дополнительные виды деятельности
+						ul
+							li Техническое обслуживание и ремонт автотранспортных средств
+							li Торговля оптовая автомобильными деталями, узлами и принадлежностями
+							li Деятельность агентов по оптовой торговле лесоматериалами и строительными материалами
+							li Деятельность агентов по оптовой торговле строительными материалами
+
+
+
+
+	include ../components/mark

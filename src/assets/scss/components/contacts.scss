@@ -52,6 +52,8 @@
 	&__mail:hover{color: $color-green;}
 }
 
+h2, .h2 + .contacts{margin-top: -15px;}
+
 @media (max-width: 767px) {
 	.contacts{
 		margin-left: 0;
