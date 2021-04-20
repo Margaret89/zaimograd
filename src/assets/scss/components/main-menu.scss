@@ -65,6 +65,10 @@
 	}
 }
 
+@media (min-width: 768px) {
+	.main-menu-wrap{display: block!important;}
+}
+
 @media (max-width: 767px) {
 	.main-menu-wrap{
 		background: #fff;

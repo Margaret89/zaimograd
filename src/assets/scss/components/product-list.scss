@@ -1,6 +1,6 @@
 /*-------------- product-list -----------------*/
 .product-wrap{
-	padding: 90px 0;
+	margin: 90px 0;
 
 	.h1, h1{margin-bottom: 5.5rem;}
 }
@@ -90,12 +90,12 @@
 }
 
 @media (max-width: 991px) {
-	.product-wrap{padding: 50px 0;}
+	.product-wrap{margin: 50px 0 60px;}
 }
 
 @media (max-width: 767px) {
 	.product-wrap{
-		padding: 45px 0;
+		margin: 45px 0;
 
 		.h1, h1{margin-bottom: 3rem;}
 	}

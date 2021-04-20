@@ -45,7 +45,7 @@ block content
 
 							input.btn(type="submit", value="Продолжить")
 
-	section.steps
+	section.steps.bg-white
 		.container
 			.row
 				.col-12
@@ -71,7 +71,7 @@ block content
 									.step-list__arr
 										+svg('ic-arrow','ic-arrow', '39', '37')
 	
-	section.product-wrap.bg-light-blue
+	section.product-wrap
 		.container
 			.row
 				.col-12
@@ -108,7 +108,7 @@ block content
 							a(href="#").btn.btn_border.btn_dot
 								span Все продукты
 
-	section.text-block
+	section.text-block.bg-white
 		.container
 			.row
 				.col-12
@@ -131,7 +131,7 @@ block content
 						li открыть небольшой бизнес;
 						li сделать ремонт.
 
-	section.review-wrap.bg-light-blue
+	section.review-wrap
 		.container
 			.row
 				.col-12
@@ -160,20 +160,20 @@ block content
 
 					.review-slider__text= item.text
 
-	section.article-wrap
+	section.article-wrap.bg-white
 		.container
 			.row
 				.col-12
 					.h1 Новости и акции
 
-			.article-list
+		.article-list
+			.container
 				.row
 					-
 						var list=[
 							{img:'article1.jpg', date:'01.03.2021', title:'Весенний розыгрыш!', text:'Дарим 43 подарка', label:'Новость'},
 							{img:'article2.jpg', date:'01.03.2021', title:'Приходи с договором конкурента — сделаем скидку!', text:'Представляем заём «С договором конкурента»', label:'Акция'},
 							{img:'article3.jpg', date:'01.03.2021', title:'Акция «День рождения»', text:'Получите скидку на заём в День рождения', label:'Новость'},
-
 						]
 
 					each item in list
@@ -201,7 +201,7 @@ block content
 							a(href="#").btn.btn_border.btn_dot
 								span Все материалы
 	
-	section.faq-wrap.bg-light-blue
+	section.faq-wrap
 		.container
 			.row
 				.col-12
@@ -227,30 +227,4 @@ block content
 								.unwrap-block__subtitle Ответ:
 								p= item.answer
 
-	section.mark-wrap
-		.container
-			.row
-				.col-12
-					.h1 Рейтинг компании
-
-			.row
-				-
-					var list=[
-						{logo:'ya.jpg', num:'4.7', text:'Оценок : 10'},
-						{logo:'zoon.jpg', num:'4.7', text:'Оценок : 10'},
-						{logo:'yahoo.jpg', num:'4.7', text:'Оценок : 10'},
-					]
-
-				each item in list
-					.col-md-6.col-lg-4
-						.mark
-							.mark__icon
-								img(src="assets/img/"+item.logo, alt="")
-							.mark__content
-								.mark__rating
-									.mark__num= item.num 
-
-									.rating
-										.rating__content(style="width:76%")
-
-								.mark__text= item.text
+	include ../components/mark

@@ -1,5 +1,7 @@
 import {$, Slider} from './common';
 
+var widthWindow = $(window).width();
+
 // Arrow top page
 $(window).on('scroll', function(){
 	if($(this).scrollTop()>300){
@@ -164,10 +166,13 @@ if($('.js-header-mob-contact-btn').length){
 	});
 
 	$(document).on('click', function(event) {
-		if ($(event.target).closest(".js-header-mob-contact-popup").length) return;
-		if ($(event.target).closest(".js-header-mob-contact-btn").length) return;
-		hideHeadContacts();
-		event.stopPropagation();
+		console.log(widthWindow);
+		if(widthWindow < 992){
+			if ($(event.target).closest(".js-header-mob-contact-popup").length) return;
+			if ($(event.target).closest(".js-header-mob-contact-btn").length) return;
+			hideHeadContacts();
+			event.stopPropagation();
+		}
 	  });
 }
 
@@ -185,11 +190,13 @@ if($('.js-btn-menu').length){
 	});
 
 	$(document).on('click', function(event) {
-		if ($(event.target).closest(".js-btn-menu").length) return;
-		if ($(event.target).closest(".js-main-menu-wrap").length) return;
-		$('.js-btn-menu').removeClass('active');
-		$('.js-main-menu-wrap').slideUp(300);
-		event.stopPropagation();
+		if(widthWindow < 768){
+			if ($(event.target).closest(".js-btn-menu").length) return;
+			if ($(event.target).closest(".js-main-menu-wrap").length) return;
+			$('.js-btn-menu').removeClass('active');
+			$('.js-main-menu-wrap').slideUp(300);
+			event.stopPropagation();
+		}
 	  });
 }
 

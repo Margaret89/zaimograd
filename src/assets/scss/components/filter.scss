@@ -1,0 +1,29 @@
+/*-------------- filter -----------------*/
+.filter{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+
+	&__item{
+		display: inline-block;
+		@include font(normal, 300, 1.6rem, 1.2, $color-grey);
+		margin-top: 10px;
+		margin-bottom: 10px;
+		transition: color 0.2s ease 0s;
+	}
+
+	&__item:hover,
+	&__item.active{
+		color: $color-red;
+		text-decoration: none;
+	}
+
+	&__item.active{cursor: auto;}
+	&__item:not(:last-child){margin-right: 40px;}
+}
+
+@media (max-width: 767px) {
+	.filter{
+		&__item:not(:last-child){margin-right: 25px;}
+	}
+}

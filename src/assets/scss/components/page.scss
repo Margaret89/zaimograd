@@ -1,0 +1,26 @@
+/*-------------- page -----------------*/
+.page-top{
+	margin-bottom: 55px;
+
+	h1, .h1{margin-bottom: 0;}
+
+	&__content{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.filter{
+		margin-top: 15px;
+		margin-left: 30px;
+	}
+}
+
+@media (max-width: 991px) {
+	.page-top{
+		margin-top: 20px;
+		margin-bottom: 35px;
+
+		&__content{display: block;}
+		.filter{margin-left: 0;}
+	}
+}

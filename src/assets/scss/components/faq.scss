@@ -1,19 +1,12 @@
 /*-------------- faq -----------------*/
 .faq-wrap{
-	padding: 82px 0;
-	margin-top: 117px;
+	margin: 90px 0 82px;
 }
 
 @media (max-width: 991px) {
-	.faq-wrap{
-		margin-top: 60px;
-		padding: 50px 0;
-	}
+	.faq-wrap{margin: 60px 0 50px;}
 }
 
 @media (max-width: 767px) {
-	.faq-wrap{
-		margin-top: 40px;
-		padding: 50px 0 36px;
-	}
+	.faq-wrap{margin: 40px 0 36px;}
 }

@@ -78,11 +78,21 @@ block content
 				a.btn(href='#') Кнопка
 				br
 				br
+				a(href="#").btn
+					span Кнопка
+					+svg('ic-arrow-down','ic-arrow-down', '14', '8')
+				br
+				br
 				a.btn.btn_border(href='#') Кнопка
 				br
 				br
 				a(href="#").btn.btn_border.btn_dot
 					span Кнопка
+				br
+				br
+				a(href="#").btn.btn_border
+					span Кнопка
+					+svg('ic-arrow-down','ic-arrow-down', '14', '8')
 
 				br
 				br
@@ -103,7 +113,7 @@ block content
 				br
 				br
 				div.h2 Фоны
-				.bg-light-blue(style="padding: 20px;")
+				.bg-white(style="padding: 20px;")
 					|По своей сути рыбатекст является альтернативой традиционному lorem ipsum, который вызывает у некторых людей недоумение при попытках прочитать рыбу текст. В отличии от lorem ipsum, текст рыба на русском языке наполнит любой макет непонятным смыслом и придаст неповторимый колорит советских времен.
 
 				br

@@ -1,6 +1,6 @@
 /*-------------- article-list -----------------*/
 .article-wrap{
-	margin: 90px 0;
+	padding: 90px 0 110px;
 
 	.h1, h1{margin-bottom: 5.5rem;}
 }
@@ -103,14 +103,15 @@
 	}
 }
 
+.article-page{margin-bottom: 103px;}
 
 @media (max-width: 991px) {
-	.article-wrap{margin: 60px 0;}
+	.article-wrap{padding: 60px 0;}
 }
 
 @media (max-width: 767px) {
 	.article-wrap{
-		margin: 40px 0;
+		padding: 40px 0;
 
 		.h1, h1{margin-bottom: 3rem;}
 	}

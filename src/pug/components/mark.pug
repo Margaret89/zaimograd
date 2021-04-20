@@ -1,0 +1,27 @@
+section.mark-wrap.bg-white.last-elem
+	.container
+		.row
+			.col-12
+				.h1 Рейтинг компании
+
+		.row
+			-
+				var list=[
+					{logo:'ya.jpg', num:'4.7', text:'Оценок : 10'},
+					{logo:'zoon.jpg', num:'4.7', text:'Оценок : 10'},
+					{logo:'yahoo.jpg', num:'4.7', text:'Оценок : 10'},
+				]
+
+			each item in list
+				.col-md-6.col-lg-4
+					.mark
+						.mark__icon
+							img(src="assets/img/"+item.logo, alt="")
+						.mark__content
+							.mark__rating
+								.mark__num= item.num 
+
+								.rating
+									.rating__content(style="width:76%")
+
+							.mark__text= item.text

@@ -101,12 +101,17 @@ li{margin-bottom: 12px;}
 main{
 	flex: 1 1 auto;
 	padding-bottom: 76px;
+	background: #f9f8ff;
 }
+
+.last-elem{margin-bottom: -76px;}
 
 .btn,
 input[type="submit"].btn,
 button.btn{
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	height: 4.6rem;
 	background: $color-red;
 	border: 0;
@@ -162,8 +167,19 @@ button.btn_border:hover span::after{
 	background: #fff;
 }
 
+.btn{
+	.icon{
+		vertical-align: middle;
+		fill: #fff;
+		transition: fill 0.2s ease 0s;
+	}
 
+	.icon:first-child{margin-right: 10px;}
+	.icon:last-child{margin-left: 10px;}
 
+	&_border .icon{fill: $color-red;}
+	&_border:hover .icon{fill: #fff;}
+}
 
 .code{
 	background-color: #f7f7f7;
@@ -182,7 +198,7 @@ button.btn_border:hover span::after{
 .text-uppercase{text-transform: uppercase !important;}
 .text-bold {font-weight: 700 !important;}
 
-.bg-light-blue{background: #f9f8ff;}
+.bg-white{background: #fff;}
 
 @media (max-width: 767px) {
 	body{
@@ -197,6 +213,7 @@ button.btn_border:hover span::after{
 	}
 
 	main{padding-bottom: 30px;}
+	.last-elem{margin-bottom: -30px;}
 
 	.btn,
 	input[type="submit"].btn,

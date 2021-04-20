@@ -1,5 +1,8 @@
 /*-------------- mark -----------------*/
-.mark-wrap{margin: 115px 0 20px;}
+.mark-wrap{
+	padding: 95px 0 76px;
+	margin-top: 80px;
+}
 
 .mark{
 	display: flex;
@@ -50,8 +53,18 @@
 	}
 }
 
+@media (max-width: 991px) {
+	.mark-wrap{
+		padding-top: 70px;
+		margin-top: 50px;
+	}
+}
+
 @media (max-width: 767px) {
-	.mark-wrap{margin: 40px 0;}
+	.mark-wrap{
+		padding: 40px 0;
+		margin-top: 36px;
+	}
 
 	.mark{
 		height: auto;

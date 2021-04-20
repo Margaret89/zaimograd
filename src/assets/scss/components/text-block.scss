@@ -1,12 +1,12 @@
 /*-------------- text-block -----------------*/
 .text-block{
-	margin: 105px 0;
+	padding: 105px 0;
 }
 
 @media (max-width: 991px) {
-	.text-block{margin: 60px 0;}
+	.text-block{padding: 60px 0;}
 }
 
 @media (max-width: 767px) {
-	.text-block{margin: 45px 0;}
+	.text-block{padding: 45px 0;}
 }
