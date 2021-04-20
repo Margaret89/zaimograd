@@ -23,6 +23,8 @@
 	&__img{margin-bottom: 40px;}
 
 	&__img + .contacts{margin-top: 63px;}
+	&__img + .faq-page{margin-top: 80px;}
+	&__img + .doc-info{margin-top: 60px;}
 }
 
 @media (max-width: 991px) {
@@ -42,6 +44,11 @@
 		padding: 20px 15px;
 
 		&__img{margin: 0 -15px 30px;}
-		&__img + .contacts{margin-top: 30px;}
+
+		&__img + .contacts,
+		&__img + .faq-page,
+		&__img + .doc-info{
+			margin-top: 30px;
+		}
 	}
 }
