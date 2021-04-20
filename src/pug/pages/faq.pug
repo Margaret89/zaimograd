@@ -1,0 +1,52 @@
+extends ../layout/main
+
+block variables
+	- var title = 'FAQ';
+	- var h1 = 'FAQ';
+
+block breadcrumb
+	-
+		var breadcrumbs=[
+			{href:'/',name:'Главная'},
+			{href:'#',name:'FAQ'},
+		];
+
+	+breadcrumbs(breadcrumbs)
+
+block content
+	section.faq-page-wrap
+		.container
+			.row
+				.col-12
+					.page-content
+						.faq-page
+							.faq-page__img
+								img(src="assets/img/faq.jpg", alt="")
+
+							-
+								var list=[
+									{question:'Вы можете получить кредит, если', answer:'Единственно верное решение материальных проблем – восполнить нехватку денежных средств. Проблемы бывают микро и макро масштаба. Проверенный план действий, разработанный специалистами компании, помогает устранить трудности, превращая их в возможности. «Центрофинанс» предлагает несколько вариантов микрозаймов, применимых для конкретной финансовой задачи'},
+									{question:'На какие цели можно взять кредит?', answer:'Текст'},
+									{question:'На какие цели можно взять кредит?', answer:'Текст'},
+									{question:'На какие цели можно взять кредит?', answer:'Текст'},
+								]
+
+							each item in list
+								.unwrap-block.js-unwrap-block
+									.unwrap-block__head.js-unwrap-head
+										.unwrap-block__title= item.question
+										.unwrap-block__btn.js-unwrap-block-btn
+											+svg('ic-plus','ic-plus', '18', '18')
+											+svg('ic-minus','ic-minus', '18', '2')
+
+									.unwrap-block__content.js-unwrap-content
+										.unwrap-block__subtitle Ответ:
+										p= item.answer
+
+							.faq-page__more
+								a(href="#").btn.btn_border
+									span Показать больше
+									+svg('ic-arrow-down','ic-arrow-down', '14', '8')
+
+
+	include ../components/mark
