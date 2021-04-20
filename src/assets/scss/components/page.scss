@@ -19,6 +19,10 @@
 	background: #fff;
 	padding: 50px 60px;
 	border-radius: 10px;
+
+	&__img{margin-bottom: 40px;}
+
+	&__img + .contacts{margin-top: 63px;}
 }
 
 @media (max-width: 991px) {
@@ -34,5 +38,10 @@
 }
 
 @media (max-width: 767px) {
-	.page-content{padding: 20px 15px;}
+	.page-content{
+		padding: 20px 15px;
+
+		&__img{margin: 0 -15px 30px;}
+		&__img + .contacts{margin-top: 30px;}
+	}
 }

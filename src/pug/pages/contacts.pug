@@ -1,0 +1,51 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Контакты';
+	- var h1 = 'Контакты';
+
+block breadcrumb
+	-
+		var breadcrumbs=[
+			{href:'/',name:'Главная'},
+			{href:'#',name:'Контакты'},
+		];
+
+	+breadcrumbs(breadcrumbs)
+
+block content
+	section.contacts-page
+		.container
+			.row
+				.col-12
+					.page-content
+						.page-content__img
+							img(src="assets/img/contacts.jpg", alt="")
+
+						.contacts
+							.contacts__item
+								.contacts__icon
+									+svg('ic-address','ic-address', '18', '21')
+								.contacts__content 164522, Архангельская область Город Северодвинск, улица Трухинова, дом 6а, пом. 3Н
+
+							.contacts__item
+								.contacts__icon
+									+svg('ic-call','ic-call', '20', '20')
+								.contacts__content
+									a.contacts__phone(href="tel:+78002507271") 8(800)250-72-71
+									.contacts__note Бесплатная горячая линия.
+
+							.contacts__item
+								.contacts__icon
+									+svg('ic-address','ic-address', '18', '21')
+								.contacts__content 164522, Архангельск, улица Трухинова, дом 6а, пом. 3Н
+
+							.contacts__item
+								.contacts__icon
+									+svg('ic-mail','ic-mail', '26', '21')
+								.contacts__content
+									a.contacts__mail(href="mailto:rostfinance@mail.ru") rostfinance@mail.ru
+
+
+
+	include ../components/mark
