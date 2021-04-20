@@ -24,6 +24,7 @@
 
 @media (max-width: 767px) {
 	.filter{
+		&__item{font-size: 1.4rem;}
 		&__item:not(:last-child){margin-right: 25px;}
 	}
 }
