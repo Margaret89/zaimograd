@@ -51,6 +51,7 @@
 		text-decoration: none;
 		margin-top: -4px;
 		transition: all 0.2s ease 0s;
+		white-space: nowrap;
 	}
 
 	&__phone:hover{color: $color-green;}
