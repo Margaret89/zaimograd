@@ -8,8 +8,8 @@
 	&::before{
 		content: '';
 		display: block;
-		width: 1314px;
-		height: 656px;
+		width: 1092px;
+		height: 628px;
 		max-width: 100%;
 		max-height: 100%;
 		background: url(../img/girl-desktop.png) no-repeat center bottom;
@@ -54,7 +54,6 @@
 @media (max-width: 991px) {
 	.top-block{
 		padding-top: 10px;
-		background: #548a0c;
 
 		&__info{max-width: 100%;}
 
@@ -63,7 +62,9 @@
 			height: 224px;
 			background:  url(../img/girl-mobile.png) no-repeat center;
 			background-size: contain;
-			position: static;
+			position: relative;
+			top: 20px;
+			margin-bottom: 20px;
 		}
 
 		.form-calc{margin-top: 50px;}
@@ -78,6 +79,8 @@
 
 	.top-block{
 		padding-top: 0;
+		background: url(../img/bg-top-slider-mob.png) top center no-repeat;
+		background-size: 100% 100%;
 
 		&__title{font-size: 2.8rem;}
 
@@ -85,5 +88,26 @@
 			margin-top: 34px;
 			margin-bottom: -245px;
 		}
+	}
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	.top-block::before{
+		background:  url(../img/girl-mobile2x.png) no-repeat center;
+		background-size: contain;
+	}
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+	.top-block::before{
+		background:  url(../img/girl-mobile2x.png) no-repeat center;
+		background-size: contain;
+	}
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+	.top-block::before{
+		background:  url(../img/girl-mobile2x.png) no-repeat center;
+		background-size: contain;
 	}
 }
