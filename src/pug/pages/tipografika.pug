@@ -97,6 +97,35 @@ block content
 				br
 				br
 				br
+				.h2 Нестандартный radio
+				.input-radio
+					input#radio1(type='radio' name='param1')
+					label.input-radio__label(for='radio1')
+						span.input-radio__mark
+						span.input-radio__text Текст
+				br
+				br
+				br
+				.h2 Нестандартный checkbox
+				.input-check
+					input#check1(type='checkbox')
+					label.input-check__label(for='check1')
+						span.input-check__mark
+							+svg('ic-tick','ic-tick', '14', '12')
+						span.input-check__text Текст
+				
+				br
+				br
+				.input-check.input-check_circle
+					input#check1(type='checkbox')
+					label.input-check__label(for='check1')
+						span.input-check__mark
+							+svg('ic-tick','ic-tick', '14', '12')
+						span.input-check__text Текст
+
+				br
+				br
+				br
 				.h2 Раскрывающийся блок
 				.unwrap-block.js-unwrap-block
 					.unwrap-block__head.js-unwrap-head
@@ -211,3 +240,13 @@ block content
 						.type-icon__img
 							+svg('ic-pdf','ic-pdf', '27', '26')
 						.type-icon__name ic-pdf
+
+					.type-icon__item
+						.type-icon__img
+							+svg('ic-edit','ic-edit', '18', '16')
+						.type-icon__name ic-edit
+
+					.type-icon__item
+						.type-icon__img
+							+svg('ic-tick','ic-tick', '14', '12')
+						.type-icon__name ic-tick

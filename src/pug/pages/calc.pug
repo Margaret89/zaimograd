@@ -1,0 +1,150 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Заявка на займ';
+	- var h1 = 'Заявка на займ';
+
+block breadcrumb
+	-
+		var breadcrumbs=[
+			{href:'/',name:'Главная'},
+			{href:'#',name:'Заявка на займ'},
+		];
+
+	+breadcrumbs(breadcrumbs)
+
+block content
+	section.calc-wrap
+		form.calc
+			.container
+				.row
+					.col-7
+						.calc__item
+							.calc__head
+								.calc__title Заполнение заявки
+								.calc__step.js-calc-step
+
+
+							.calc__sect
+								.calc-range.js-calc-range
+									.calc-range__top
+										span.calc-range__title Желаемая сумма:
+										span.calc-range__field
+											input(type="text", class="js-calc-range-val")
+											.calc-range__currency руб.
+											.calc-range__icon
+												+svg('ic-edit','ic-edit', '18', '16')
+
+										input(type='text' name='prices' data-provide='slider' data-slider-ticks="[1000, 5000, 10000, 30000, 50000]" data-slider-ticks-labels='["1 000", "5 000", "10 000", "30 000", "50 000"]' data-slider-tooltip="hide" data-slider-min='1000' data-slider-max='50000' data-slider-value='5170' class="js-calc-range-input")
+
+								.calc-select.js-calc-select
+									.calc-select__field.js-calc-select-field
+										.calc-select__info
+											.calc-select__label На какие цели берете кредит?
+											.calc-select__val.js-calc-select-val
+
+										.calc-select__arr
+											+svg('ic-arrow-down','ic-arrow-down', '14', '8')
+
+									.calc-select__popup.js-calc-select-popup
+										-
+											var list=[
+												{text:'Снятие наличных'},
+												{text:'Покупка машины'},
+												{text:'Покупка мебели'},
+												{text:'Обучение'},
+												{text:'Лечение'},
+											]
+										each item, index in list
+											.input-radio
+												input(type='radio' name='aim', id='aim'+index)
+												label.input-radio__label(for='aim'+index)
+													span.input-radio__mark
+													span.input-radio__text= item.text
+								.calc__sect
+									.calc__title Контактная информация
+
+									.form-calc
+										.form-calc__content
+											.form-calc__field
+												input(type="text", required="required")
+												.form-calc__label Фамилия, имя, отчество*
+
+											.form-calc__field
+												input(type="text", required="required")
+												.form-calc__label Имя*
+
+											.form-calc__field
+												input(type="text", required="required")
+												.form-calc__label Отчество*
+
+											.form-calc__field.form-calc__field_half
+												input(type="text", class="js-phone", required="required")
+												.form-calc__label Мобильный телефон*
+
+											.form-calc__field.form-calc__field_half
+												input(type="email")
+												.form-calc__label Электронная почта
+										
+										.form-calc__bottom
+											.form-calc__cond
+												.input-check.input-check_circle
+													input#check-info(type='checkbox', checked='checked')
+													label.input-check__label(for='check-info')
+														span.input-check__mark
+															+svg('ic-tick','ic-tick', '14', '12')
+														span.input-check__text Я принимаю условия передачи информации
+
+												.input-check.input-check_circle
+													input#check-doc(type='checkbox')
+													label.input-check__label(for='check-doc')
+														span.input-check__mark
+															+svg('ic-tick','ic-tick', '14', '12')
+														span.input-check__text Я ознакомлен(а) с приведёнными ниже документами
+
+											.form-calc__btn
+												span.btn Далее
+
+					.col-5
+						.calc-total
+							.calc-total__top
+								.calc-total__label Сумма:
+								.calc-total__price 5170 
+									span.calc-total__currency руб
+
+							.calc-progress
+								.calc-progress__label Вероятность одобрения
+
+								.calc-progress__val 5%
+								
+								.calc-progress-line
+									.calc-progress-line__cur(style="5%")
+									.calc-progress-line__probably(style="50%")
+
+								.calc-progress__note +50% за 1-й шаг
+
+
+			.row
+				.col-12
+					.docs-list
+						-
+							var list=[
+								{text:'Правила предоставления онлайн займов', size:'863.53 KB'},
+								{text:'Общие условия договора онлайн займа', size:'863.53 KB'},
+								{text:'Информация об условиях предоставления РФ', size:'11.81 Кб'},
+								{text:'Положение о защите персональных данных', size:'863.53 KB'},
+								{text:'Политика в отношении обработки и защиты персональных данных', size:'863.53 KB'},
+							]
+
+						each item in list
+							.doc
+								.doc__content
+									.doc__icon
+										+svg('ic-pdf','ic-pdf', '27', '26')
+
+									.doc__info
+										span.doc__text= item.text
+										span.doc__size= item.size
+
+								a(href="#").btn.btn_border.btn_dot
+									span Скачать

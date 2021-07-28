@@ -242,3 +242,20 @@ if($('.js-team-slider-list').length){
 		]
 	});
 }
+
+// calc range slider
+if($('.js-calc-range-input').length){
+	$('.js-calc-range-input').each(function(){
+		var $parent = $(this).parents('.js-calc-range');
+		var $rangeVal = $parent.find('.js-calc-range-val');
+
+		$rangeVal.val($(this).data('slider-value'));
+	});
+	
+
+	$('.js-calc-range-input').on("slide", function(e) {
+		var $rangeVal = $(this).closest('.js-calc-range').find('.js-calc-range-val');
+
+		$rangeVal.val(e.value);
+	});
+}
