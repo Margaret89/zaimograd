@@ -1,4 +1,4 @@
-import {$, Slider} from './common';
+import {$, Slider, Inputmask} from './common';
 
 var widthWindow = $(window).width();
 
@@ -86,8 +86,8 @@ if($('.js-step-list').length){
 	var stepBlockTop = $('.js-step-list').offset().top;
 	var topStepScroll = stepBlockTop - $(window).outerHeight()/2;
 
-	console.log(stepBlockTop);
-	console.log(topStepScroll);
+	// console.log(stepBlockTop);
+	// console.log(topStepScroll);
 
 	$(window).on('scroll', function(){
 		if($(this).scrollTop()>=topStepScroll){
@@ -166,7 +166,6 @@ if($('.js-header-mob-contact-btn').length){
 	});
 
 	$(document).on('click', function(event) {
-		console.log(widthWindow);
 		if(widthWindow < 992){
 			if ($(event.target).closest(".js-header-mob-contact-popup").length) return;
 			if ($(event.target).closest(".js-header-mob-contact-btn").length) return;
@@ -243,19 +242,176 @@ if($('.js-team-slider-list').length){
 	});
 }
 
+// calc
 // calc range slider
 if($('.js-calc-range-input').length){
 	$('.js-calc-range-input').each(function(){
 		var $parent = $(this).parents('.js-calc-range');
 		var $rangeVal = $parent.find('.js-calc-range-val');
-
-		$rangeVal.val($(this).data('slider-value'));
+		
+		$rangeVal.text($(this).data('slider-value'));
 	});
 	
-
+	
 	$('.js-calc-range-input').on("slide", function(e) {
 		var $rangeVal = $(this).closest('.js-calc-range').find('.js-calc-range-val');
+		
+		$rangeVal.text(e.value);
+	});
 
-		$rangeVal.val(e.value);
+	$('.js-calc-range-val').on('input', function() {
+		const regEx = /[^\d]/g;
+		var rangeVal = $(this).text().replace(regEx, '');
+
+		$('.js-calc-range-input').slider('setValue', rangeVal);
+	});
+
+	$('.js-calc-range-val').on('blur', function() {
+		const regEx = /[^\d]/g;
+		var rangeVal = $(this).text().replace(regEx, '');
+		var valEdit = Number.parseInt(rangeVal);
+		var sliderMin = $(this).parents('.js-calc-range').find('.js-calc-range-input').data('slider-min');
+		var sliderMax = $(this).parents('.js-calc-range').find('.js-calc-range-input').data('slider-max');
+
+		$(this).text(rangeVal);
+
+		if(valEdit < sliderMin){
+			$(this).text(sliderMin);
+		}else if(valEdit > sliderMax){
+			$(this).text(sliderMax);
+		}
 	});
 }
+
+// select
+if($('.js-calc-select-field').length){
+	$('.js-calc-select-field').on('click', function(){
+		$(this).closest('.js-calc-select').toggleClass('open');
+		$(this).siblings('.js-calc-select-popup').slideToggle(300);
+	});
+
+	if($('.js-calc-select-radio:checked').length){
+		var $parent = $('.js-calc-select-radio:checked').closest('.js-calc-select');
+
+		$parent.addClass('active');
+		$parent.find('.js-calc-select-val').text($('.js-calc-select-radio:checked').val());
+	}
+
+	$('.js-calc-select-radio').on('change', function() {
+		var $parent = $(this).closest('.js-calc-select');
+
+		$parent.addClass('active');
+		$parent.find('.js-calc-select-val').text($(this).val());
+	});
+}
+
+// select (без поппапа)
+if($('.js-calc-choose').length){
+	if($('.js-calc-choose-radio:checked').length){
+		var $parent = $('.js-calc-choose-radio:checked').closest('.js-calc-choose');
+
+		$parent.addClass('active');
+		$parent.find('.js-calc-choose-val').text($('.js-calc-choose-radio:checked').val());
+
+		if($('.js-calc-choose-radio:checked').data('other') !== undefined){
+			$parent.find('.js-calc-choose-other').addClass('active');
+		}else{
+			$parent.find('.js-calc-choose-other').removeClass('active');
+		}
+	}
+
+	$('.js-calc-choose-radio').on('change', function() {
+		var $parent = $(this).closest('.js-calc-choose');
+
+		$parent.addClass('active');
+		$parent.find('.js-calc-choose-val').text($(this).val());
+
+		if($(this).data('other') !== undefined){
+			$parent.find('.js-calc-choose-other').addClass('active');
+		}else{
+			$parent.find('.js-calc-choose-other').removeClass('active');
+		}
+	});
+}
+
+// Задаем проценты (вероятность одобрения)
+if($('.js-calc-progress-line-cur').length){
+	$('.js-calc-progress-line-cur').css('width', $('.js-calc-item:first-child').data('cur-percent')+'%')
+	$('.js-calc-progress-line-probably').css('width', $('.js-calc-item:first-child').data('percent')+'%')
+}
+
+// Валидация форм
+if($('.js-calc-form').length){
+	$('.js-calc-item').on('click', '.js-btn-next', function(e){
+		var $form = $(this).closest('.js-calc-item');
+		errorField($form, e);
+	});
+
+	$('.js-calc-item').find('input,textarea,select').on('change', function() {
+		var $curField = $(this).closest('.js-calc-form-field');
+
+		if($curField.hasClass('error')){
+			if($(this).val().length > 0){
+				$curField.removeClass('error');
+				$curField.addClass('success');
+			}
+		}
+	});
+}
+
+function errorField(form, event) {
+	form.find('.js-calc-form-field').removeClass('error');
+	form.find('.calc-form-msg-error').remove();
+	
+	form.find('input[type=email]').each(function(){
+		var email = $(this).val();
+		var pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,6}\.)?[a-z]{2,6}$/i;
+		var $curField = $(this).closest('.js-calc-form-field');
+
+		if (!pattern.test(email) && (email.length > 1)) {
+			$curField.addClass('error');
+
+			if($curField.data('error')  === 'undefined'){
+				$curField.append('<div class="calc-form-msg-error">Укажите корректный E-mail</div>')
+			}else{
+				$curField.append('<div class="calc-form-msg-error">'+$curField.data('error')+'</div>')
+			}
+		}
+	});
+
+
+	form.find('input,textarea,select').filter('[required]').each(function(){
+		if($(this).val().length < 1){
+			var $curField = $(this).closest('.js-calc-form-field');
+			$curField.addClass('error');
+
+			if($curField.data('error')  === 'undefined'){
+				$curField.append('<div class="calc-form-msg-error">Заполните поле</div>')
+			}else{
+				$curField.append('<div class="calc-form-msg-error">'+$curField.data('error')+'</div>')
+			}
+		}
+
+		if($(this).attr('type') == 'checkbox' && !$(this).prop('checked')){
+			var $curCheck = $(this).closest('.js-input-check');
+
+			if($curCheck.data('error')  === 'undefined'){
+				$curCheck.find('.js-input-check-text').append('<div class="calc-form-msg-error">Заполните поле</div>')
+			}else{
+				$curCheck.find('.js-input-check-text').append('<div class="calc-form-msg-error">'+$curCheck.data('error')+'</div>')
+			}
+
+		}
+	});
+
+
+
+
+
+	// if(form.find('.js-form-site-item.error').length){
+	// 	event.preventDefault();
+	// }
+}
+
+// Маска для телефона
+Inputmask('+7 (999) 999-9999').mask('.js-phone');

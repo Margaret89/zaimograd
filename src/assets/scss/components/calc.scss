@@ -1,0 +1,669 @@
+/*-------------- calc -----------------*/
+.calc{
+	background: #fff;
+	border-radius: 10px;
+	padding: 48px 65px;
+
+	&__item{display: none;}
+	&__item.active{display: block;}
+
+	&__wrap{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__content{width: calc(100% - 437px);}
+
+	&__head{
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 30px;
+
+		.calc-tag{margin-top: 8px;}
+	}
+
+	&__head-info{
+		display: inline-flex;
+		margin-right: 20px;
+	}
+
+	&__head &__title{
+		max-width: 350px;
+		margin: 0 20px 0 0;
+	}
+
+	&__title-wrap{
+		display: flex;
+		align-items: center;
+		margin-bottom: 30px;
+	}
+
+	&__title{
+		@include font(normal, bold, 2.6rem, 1.2, $color-text);
+		margin-bottom: 20px;
+	}
+
+	&__title-wrap &__title{
+		margin-bottom: 0;
+		margin-right: 20px;
+	}
+
+	&__step{
+		@include font(normal, normal, 2rem, 1.5, $color-text);
+		white-space: nowrap;
+		padding-top: 3px;
+	}
+
+	&__sect:not(:last-child){margin-bottom: 80px;}
+
+	&__docs{
+		margin-top: 12px;
+		padding-top: 84px;
+		border-top: 1px solid #e6e8eb;
+
+		.h2, h2{margin-bottom: 18px;}
+	}
+}
+
+.calc-range{
+	border: 1px solid #e6e8eb;
+	border-radius: 5px;
+	padding: 30px;
+	margin-bottom: 33px;
+
+	&__label{
+		@include font(normal, normal, 2rem, 1.2, $color-text);
+		margin-bottom: 26px;
+	}
+
+	&__field{
+		display: inline-flex;
+		align-items: flex-end;
+		margin-bottom: 20px;
+		@include font(normal, bold, 2rem, 1.2, $color-text);
+	}
+
+	&__val{
+		white-space: nowrap;
+		br{display: none;}
+	}
+
+	&__icon{
+		margin-left: 7px;
+		padding-bottom: 3px;
+
+		.icon{
+			display: block;
+			fill: #6ac074;
+		}
+	}
+
+	.slider.slider-horizontal{
+		width: 100%;
+		margin-bottom: 45px!important;
+	}
+
+	.slider.slider-horizontal .slider-track{
+		height: 8px;
+		border-radius: 4px;
+		margin-top: -4px;
+		background: #dbe1ea;
+		box-shadow: none;
+	}
+	
+	.slider-selection{
+		background: $color-green;
+		box-shadow: none;
+	}
+
+	.slider-handle{
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		background: #fff;
+		box-shadow: 0px 0px 10px #C2C9D7;
+
+		&::after{
+			content: '';
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: $color-green;
+			position: absolute;
+			@include top-center;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+		}
+	}
+
+	.slider.slider-horizontal .slider-handle, .slider.slider-horizontal .slider-tick{margin-left: -12px;}
+	.slider.slider-horizontal .slider-tick{display: none;}
+	.slider.slider-horizontal .slider-tick-label-container{margin-top: 40px;}
+
+	.slider.slider-horizontal .slider-tick-label-container .slider-tick-label{
+		@include font(normal, normal, 1.4rem, 1, #909090);
+	}
+
+	.slider.slider-horizontal .slider-tick-label-container .slider-tick-label:first-child,
+	.slider.slider-horizontal .slider-tick-label-container .slider-tick-label:last-child{
+		width: auto!important;
+		margin-left: 0!important;
+	}
+
+	.slider.slider-horizontal .slider-tick-label-container .slider-tick-label:last-child{
+		left: auto!important;
+		right: 0;
+	}
+}
+
+.calc-select{
+	position: relative;
+
+	&__field{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		min-height: 6rem;
+		border: 1px solid #e6e8ec;
+		border-radius: 5px;
+		background: #f9fbff;
+		padding: 5px 30px;
+		cursor: pointer;
+		transition: border 0.2s ease 0s;
+	}
+
+	&__label{
+		@include font(normal, normal, 1.6rem, 1.2, #6a6a6a);
+	}
+
+	&__val{
+		display: none;
+		@include font(normal, normal, 1.6rem, 1.2, $color-text);
+		margin-top: 2px;
+	}
+
+	&__arr{
+		flex: 0 0 14px;
+
+		.icon{
+			display: block;
+			fill: $color-text;
+			transition: transform 0.2s ease 0s;
+		}
+	}
+
+	&__popup{
+		display: none;
+		width: 100%;
+		background: #fff;
+		border-radius: 10px;
+		padding: 37px 30px;
+		box-shadow: 0px 0px 20px rgba(199, 213, 234, 0.7);
+		position: absolute;
+		top: calc(100% + 11px);
+		left: 0;
+		z-index: 10;
+
+		.input-radio{
+			display: inline-block;
+			vertical-align: top;
+		}
+	}
+
+	&__item:not(:last-child){margin-bottom: 16px;}
+
+	&.active &__label{font-size: 1.4rem;}
+	&.active &__val{display: block;}
+
+	&.open &__field,
+	&__field:hover{
+		border-color: $color-text;
+	}
+
+	&.open &__arr .icon{transform: rotate(180deg);}
+}
+
+.calc-tag{
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	vertical-align: top;
+	height: 2rem;
+	border-radius: 1rem;
+	background: $color-dark-green;
+	padding: 0 6px;
+	@include font(normal, normal, 1.4rem, 2rem, #fff);
+}
+
+.calc-form{
+	margin-bottom: -20px;
+
+	&__content{
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: -10px;
+		margin-right: -10px;
+	}
+
+	&__text{
+		@include font(normal, normal, 1.6rem, 1.2, #6a6a6a);
+		margin-bottom: 30px;
+	}
+
+	&__field{
+		width: calc(100% - 20px);
+		margin: 0 10px 20px;
+	}
+
+	&__field-content{position: relative;}
+	&__field_half{width: calc(50% - 20px);}
+	&__field_quarter{width: calc(25% - 20px);}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="number"],
+	input[type="password"],
+	textarea{
+		display: inline-block;
+		height: 6rem;
+		width: 100%;
+		font-family: $font-site;
+		@include font(normal, normal, 1.6rem, 3rem, $color-text);
+		padding: 20px 30px 0;
+		border-radius: 5px;
+		border: 1px solid #e6e8ec;
+		outline: 0;
+		margin: 0;
+		outline: 0;
+		background: #f9fbff;
+		box-shadow: none;
+		transition: border 0.2s ease 0s;
+	}
+
+	textarea{
+		height: 8rem;
+		line-height: 1.6;
+		padding-bottom: 1.5rem;
+	}
+
+	input[type="password"]{color: $color-dark-green;}
+
+	&__label{
+		height: 100%;
+		width: 100%;
+		padding: 0 30px;
+		@include font(normal, normal, 1.6rem, 5.8rem, #6a6a6a);
+		position: absolute;
+		top: 0;
+		left: 0;
+		transition: all 0.2s ease 0s;
+		cursor: text;
+	}
+
+	input[type="text"]:focus + &__label,
+	input[type="number"]:focus + &__label,
+	input[type="email"]:focus + &__label,
+	input[type="password"]:focus + &__label,
+	textarea:focus + &__label,
+	input[type="text"]:not(:placeholder-shown) + &__label,
+	input[type="number"]:not(:placeholder-shown) + &__label,
+	input[type="email"]:not(:placeholder-shown) + &__label,
+	input[type="password"]:not(:placeholder-shown) + &__label,
+	textarea:not(:placeholder-shown) + &__label{
+		height: 2rem;
+		font-size: 1.4rem;
+		line-height: 2rem;
+		top: 10px;
+	}
+
+	&__field_indent{
+		input[type="text"],
+		input[type="email"],
+		input[type="number"],
+		input[type="password"],
+		textarea{
+			padding-right: 100px;
+		}
+	}
+
+	.calc-tag{
+		position: absolute;
+		@include top-center;
+		right: 15px;
+	}
+
+	&__field.error{
+		input[type="text"],
+		input[type="number"],
+		input[type="email"],
+		input[type="password"],
+		textarea{
+			background: #fff2f3;
+		}
+	}
+
+	&__field.success{
+		input[type="text"],
+		input[type="number"],
+		input[type="email"],
+		input[type="password"],
+		textarea{
+			padding-right: 60px;
+			background-image: url(../img/tick.png);
+			background-repeat: no-repeat;
+			background-position: calc(100% - 30px) 50%;
+		}
+	}
+}
+
+.calc-form-msg-error{
+	@include font(normal, normal, 1.4rem, 1.2, $color-red);
+	margin-top: 13px;
+	margin-bottom: -3px;
+}
+
+.calc-bottom{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 30px;
+	border-top: 1px solid #e6e8ec;
+	padding-top: 34px;
+	padding-bottom: 34px;
+
+	.input-check{
+		&__text{
+			color: #6a6a6a;
+			letter-spacing: 0.2px;
+		}
+	}
+
+	.input-check:not(:last-child){margin-bottom: 18px;}
+
+	&__cond{margin-right: 30px;}
+}
+
+.calc-total{
+	width: 340px;
+
+	&__top{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-bottom: 32px;
+		border-bottom: 1px solid #e6e8eC;
+		margin-bottom: 46px;
+	}
+
+	&__label{
+		@include font(normal, normal, 2rem, 1.2, $color-text);
+		margin-right: 15px;
+	}
+
+	&__price{
+		@include font(normal, bold, 2.4rem, 1.2, $color-text);
+	}
+
+	&__currency{
+		font-size: 2rem;
+		font-weight: normal;
+	}
+}
+
+.calc-progress{
+	&__label{
+		@include font(normal, normal, 2rem, 1.2, $color-text);
+		margin-bottom: 17px;
+	}
+
+	&__val{
+		@include font(normal, bold, 2.4rem, 1.2, $color-text);
+		margin-bottom: 17px;
+	}
+
+	&__note{
+		@include font(normal, normal, 1.4rem, 1.2, #909090);
+		margin-top: 15px;
+	}
+}
+
+.calc-progress-line{
+	height: 8px;
+	background: #dbe1ea;
+	border-radius: 4px;
+	position: relative;
+	overflow: hidden;
+
+	&__probably,
+	&__cur{
+		display: block;
+		height: 100%;
+		width: 0;
+		border-radius: 4px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		transition: width 0.2s ease 0s;
+	}
+
+	&__probably{background: #8be3aa;}
+	&__cur{background: $color-dark-green;}
+}
+
+.calc-choose{
+	&__top{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		min-height: 6rem;
+		border: 1px solid #e6e8ec;
+		border-radius: 5px;
+		background: #f9fbff;
+		padding: 5px 30px;
+		margin-bottom: 18px;
+	}
+
+	&__label{
+		@include font(normal, normal, 1.6rem, 1.2, #6a6a6a);
+	}
+
+	&__val{
+		display: none;
+		@include font(normal, normal, 1.6rem, 1.2, $color-text);
+		margin-top: 2px;
+	}
+
+	&__arr{
+		flex: 0 0 14px;
+
+		.icon{
+			display: block;
+			fill: $color-text;
+			transition: transform 0.2s ease 0s;
+		}
+	}
+
+	&__content{
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: -10px;
+		margin-right: -10px;
+	}
+
+	&__other{
+		display: none;
+		position: relative;
+
+		textarea{
+			display: inline-block;
+			height: 8rem;
+			width: 100%;
+			font-family: $font-site;
+			@include font(normal, normal, 1.6rem, 1.6rem, $color-text);
+			padding: 25px 30px 10px;
+			border-radius: 5px;
+			border: 1px solid #e6e8ec;
+			outline: 0;
+			margin: 0;
+			outline: 0;
+			background: #f9fbff;
+			box-shadow: none;
+			transition: border 0.2s ease 0s;
+		}
+	}
+
+	&__other.active{display: block;}
+
+	textarea:focus + &__other-label,
+	textarea:not(:placeholder-shown) + &__other-label{
+		height: 2rem;
+		font-size: 1.4rem;
+		line-height: 2rem;
+		top: 5px;
+	}
+
+	&__other-label{
+		height: 100%;
+		width: 100%;
+		padding: 0 30px;
+		@include font(normal, normal, 1.6rem, 4.8rem, #6a6a6a);
+		position: absolute;
+		top: 0;
+		left: 0;
+		transition: all 0.2s ease 0s;
+		cursor: text;
+	}
+
+	&.active &__label{font-size: 1.4rem;}
+	&.active &__val{display: block;}
+}
+
+.calc-choose-item{
+	width: calc(50% - 20px);
+	margin: 0 10px 20px;
+
+	&__label{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		min-height: 6rem;
+		border: 1px solid #e6e8ec;
+		border-radius: 5px;
+		background: #f9fbff;
+		padding: 5px 30px;
+		margin: 0;
+		position: relative;
+		cursor: pointer;
+	}
+
+	input[type=radio]{display: none;}
+
+	&__content{margin-right: 20px;}
+
+	&__title{
+		@include font(normal, normal, 1.6rem, 1.2, $color-text);
+	}
+
+	&__text{
+		@include font(normal, normal, 1.4rem, 1.2, #6a6a6a);
+		margin-top: 3px;
+	}
+
+	&__mark{
+		display: inline-block;
+		flex: 0 0 20px;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: #d5dbeb;
+		position: relative;
+	}
+
+	&__mark::after{
+		content: '';
+		display: block;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: #fff;
+		position: absolute;
+		@include top-center;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
+	
+	&__label:hover &__title{color: $color-dark-green;}
+	input[type=radio]:checked + &__label &__mark{background: $color-dark-green;}
+}
+
+.calc-sms{
+	.calc-form{
+		&__text{color: $color-text;}
+	}
+}
+
+.calc-success{
+	display: none;
+	background: #f9fbff;
+	border: 1px solid #e6e8eb;
+	border-radius: 5px;
+	padding: 60px;
+	text-align: center;
+
+	&.active{display: block;}
+
+	&__title{
+		@include font(normal, bold, 2.6rem, 1.2, $color-text);
+	}
+
+	&__text{
+		@include font(normal, normal, 2rem, 1.5, $color-text);
+		margin-top: 30px;
+	}
+
+	&__note{
+		max-width: 800px;
+		@include font(normal, 300, 1.6rem, 1.75, $color-text);
+		margin: 20px auto 0;
+	}
+
+	.btn{margin-top: 30px;}
+}
+
+.calc-back{
+	display: none;
+	cursor: pointer;
+
+	&.active{
+		display: inline-flex;
+		align-items: center;
+	}
+
+	&__icon{
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex: 0 0 30px;
+		width: 30px;
+		height: 30px;
+		border: 2px solid $color-dark-green;
+		margin-right: 10px;
+		border-radius: 50%;
+		transition: background 0.2s ease 0s;
+
+		.icon{
+			fill: $color-dark-green;
+			transition: fill 0.2s ease 0s;
+		}
+	}
+
+	&__text{
+		@include font(normal, normal, 1.6rem, 1.2, #6a6a6a);
+	}
+
+	&:hover &__icon{background: $color-dark-green;}
+	&:hover &__icon .icon{fill: #fff;}
+}

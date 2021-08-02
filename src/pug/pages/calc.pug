@@ -15,136 +15,347 @@ block breadcrumb
 
 block content
 	section.calc-wrap
-		form.calc
-			.container
-				.row
-					.col-7
-						.calc__item
-							.calc__head
-								.calc__title Заполнение заявки
-								.calc__step.js-calc-step
-
-
-							.calc__sect
-								.calc-range.js-calc-range
-									.calc-range__top
-										span.calc-range__title Желаемая сумма:
-										span.calc-range__field
-											input(type="text", class="js-calc-range-val")
-											.calc-range__currency руб.
-											.calc-range__icon
-												+svg('ic-edit','ic-edit', '18', '16')
-
-										input(type='text' name='prices' data-provide='slider' data-slider-ticks="[1000, 5000, 10000, 30000, 50000]" data-slider-ticks-labels='["1 000", "5 000", "10 000", "30 000", "50 000"]' data-slider-tooltip="hide" data-slider-min='1000' data-slider-max='50000' data-slider-value='5170' class="js-calc-range-input")
-
-								.calc-select.js-calc-select
-									.calc-select__field.js-calc-select-field
-										.calc-select__info
-											.calc-select__label На какие цели берете кредит?
-											.calc-select__val.js-calc-select-val
-
-										.calc-select__arr
-											+svg('ic-arrow-down','ic-arrow-down', '14', '8')
-
-									.calc-select__popup.js-calc-select-popup
-										-
-											var list=[
-												{text:'Снятие наличных'},
-												{text:'Покупка машины'},
-												{text:'Покупка мебели'},
-												{text:'Обучение'},
-												{text:'Лечение'},
-											]
-										each item, index in list
-											.input-radio
-												input(type='radio' name='aim', id='aim'+index)
-												label.input-radio__label(for='aim'+index)
-													span.input-radio__mark
-													span.input-radio__text= item.text
-								.calc__sect
-									.calc__title Контактная информация
-
-									.form-calc
-										.form-calc__content
-											.form-calc__field
-												input(type="text", required="required")
-												.form-calc__label Фамилия, имя, отчество*
-
-											.form-calc__field
-												input(type="text", required="required")
-												.form-calc__label Имя*
-
-											.form-calc__field
-												input(type="text", required="required")
-												.form-calc__label Отчество*
-
-											.form-calc__field.form-calc__field_half
-												input(type="text", class="js-phone", required="required")
-												.form-calc__label Мобильный телефон*
-
-											.form-calc__field.form-calc__field_half
-												input(type="email")
-												.form-calc__label Электронная почта
-										
-										.form-calc__bottom
-											.form-calc__cond
-												.input-check.input-check_circle
-													input#check-info(type='checkbox', checked='checked')
-													label.input-check__label(for='check-info')
-														span.input-check__mark
-															+svg('ic-tick','ic-tick', '14', '12')
-														span.input-check__text Я принимаю условия передачи информации
-
-												.input-check.input-check_circle
-													input#check-doc(type='checkbox')
-													label.input-check__label(for='check-doc')
-														span.input-check__mark
-															+svg('ic-tick','ic-tick', '14', '12')
-														span.input-check__text Я ознакомлен(а) с приведёнными ниже документами
-
-											.form-calc__btn
-												span.btn Далее
-
-					.col-5
-						.calc-total
-							.calc-total__top
-								.calc-total__label Сумма:
-								.calc-total__price 5170 
-									span.calc-total__currency руб
-
-							.calc-progress
-								.calc-progress__label Вероятность одобрения
-
-								.calc-progress__val 5%
-								
-								.calc-progress-line
-									.calc-progress-line__cur(style="5%")
-									.calc-progress-line__probably(style="50%")
-
-								.calc-progress__note +50% за 1-й шаг
-
-
+		.container
 			.row
 				.col-12
-					.docs-list
-						-
-							var list=[
-								{text:'Правила предоставления онлайн займов', size:'863.53 KB'},
-								{text:'Общие условия договора онлайн займа', size:'863.53 KB'},
-								{text:'Информация об условиях предоставления РФ', size:'11.81 Кб'},
-								{text:'Положение о защите персональных данных', size:'863.53 KB'},
-								{text:'Политика в отношении обработки и защиты персональных данных', size:'863.53 KB'},
-							]
+					form.calc
+						.calc__wrap
+							.calc__content
+								.calc__item.active.js-calc-item(data-step='1', data-cur-percent='5', data-percent='35')
+									.calc__head
+										.calc__head-info
+											.calc__title Заполнение заявки
+										.calc__step Шаг 1 из 4
 
-						each item in list
-							.doc
-								.doc__content
-									.doc__icon
-										+svg('ic-pdf','ic-pdf', '27', '26')
+									.calc__sect
+										.calc-range.js-calc-range
+											.calc-range__label Желаемая сумма:
+											.calc-range__field.js-calc-range-field
+												span.calc-range__val.js-calc-range-val(contenteditable="true") 0
+												span.calc-range__currency &nbsp;руб.
+												span.calc-range__icon
+													+svg('ic-edit','ic-edit', '18', '16')
 
-									.doc__info
-										span.doc__text= item.text
-										span.doc__size= item.size
+											input(type='text' name='prices' data-provide='slider' data-slider-ticks="[1000, 5000, 10000, 30000, 50000]" data-slider-ticks-labels='["1 000", "5 000", "10 000", "30 000", "50 000"]' data-slider-tooltip="hide" data-slider-min='1000' data-slider-max='50000' data-slider-value='5170' data-slider-ticks-positions="[0, 25, 50, 75, 100]" class="js-calc-range-input")
 
-								a(href="#").btn.btn_border.btn_dot
-									span Скачать
+										.calc-select.js-calc-select
+											.calc-select__field.js-calc-select-field
+												.calc-select__info
+													.calc-select__label На какие цели берете кредит?
+													.calc-select__val.js-calc-select-val
+
+												.calc-select__arr
+													+svg('ic-arrow-down','ic-arrow-down', '14', '8')
+
+											.calc-select__popup.js-calc-select-popup
+												-
+													var list=[
+														{text:'Снятие наличных'},
+														{text:'Покупка машины'},
+														{text:'Покупка мебели'},
+														{text:'Обучение'},
+														{text:'Лечение'},
+													]
+												each item, index in list
+													.calc-select__item
+														.input-radio
+															input(type='radio' name='aim', id='aim'+index, class='js-calc-select-radio', value=item.text)
+															label.input-radio__label(for='aim'+index)
+																span.input-radio__mark
+																span.input-radio__text= item.text
+								
+									.calc__sect
+										.calc__title-wrap
+											.calc__title Контактная информация
+
+										.calc-form.js-calc-form
+											.calc-form__content
+												.calc-form__field.js-calc-form-field(data-error='Укажите фамилию')
+													.calc-form__field-content
+														input(type="text", required="required", placeholder=" ", id="surename")
+														label.calc-form__label(for='surename') Фамилия*
+
+												.calc-form__field.js-calc-form-field(data-error='Укажите имя')
+													.calc-form__field-content
+														input(type="text", required="required", placeholder=" ", id="name")
+														label.calc-form__label(for='name') Имя*
+
+												.calc-form__field.js-calc-form-field(data-error='Укажите отчество')
+													.calc-form__field-content
+														input(type="text", required="required", placeholder=" ", id="middlename")
+														label.calc-form__label(for='middlename') Отчество*
+
+												.calc-form__field.calc-form__field_half.js-calc-form-field(data-error='Укажите мобильный телефон')
+													.calc-form__field-content
+														input(type="text", class="js-phone", required="required", placeholder=" ", id="phone")
+														label.calc-form__label(for='phone') Мобильный телефон*
+
+												.calc-form__field.calc-form__field_half.calc-form__field_indent.js-calc-form-field
+													.calc-form__field-content
+														input(type="email", placeholder=" ", id="email")
+														label.calc-form__label(for='email') Электронная почта
+														.calc-tag +10%
+											
+								.calc__item.js-calc-item(data-step='2', data-percent='35')
+									.calc__head
+										.calc__head-info
+											.calc__title Паспортные данные
+											.calc-tag +10%
+
+										.calc__step Шаг 2 из 4
+
+									.calc__sect
+										.calc-form.js-calc-form
+											.calc-form__content
+												.calc-form__field.calc-form__field_half.js-calc-form-field(data-error='Укажите серию и номер паспорта')
+													.calc-form__field-content
+														input(type="text", required="required", placeholder=" ", id="pasport")
+														label.calc-form__label(for='pasport') Серия и номер паспорта*
+
+												.calc-form__field.calc-form__field_half.js-calc-form-field(data-error='Укажите дату рождения')
+													.calc-form__field-content
+														input(type="text", required="required", placeholder=" ", id="date")
+														label.calc-form__label(for='date') Дата рождения*
+
+												.calc-form__field.js-calc-form-field(data-error='Укажите место рождения')
+													.calc-form__field-content
+														input(type="text", required="required", placeholder=" ", id="place-birth")
+														label.calc-form__label(for='place-birth') Место рождения*
+
+												.calc-form__field.calc-form__field_half.js-calc-form-field(data-error='Укажите код подразделения')
+													.calc-form__field-content
+														input(type="text" required="required", placeholder=" ", id="code")
+														label.calc-form__label(for='code') Код подразделения*
+
+												.calc-form__field.calc-form__field_half.js-calc-form-field(data-error='Укажите дату выдачи')
+													.calc-form__field-content
+														input(type="text" required="required", placeholder=" ", id="date-issue")
+														label.calc-form__label(for='date-issue') Дата выдачи*
+
+												.calc-form__field.js-calc-form-field(data-error='Укажите кем выдан')
+													.calc-form__field-content
+														input(type="text" required="required", placeholder=" ", id="issue-whom")
+														label.calc-form__label(for='issue-whom') Кем выдан*
+
+												.calc-form__field.js-calc-form-field(data-error='Укажите СНИЛС')
+													.calc-form__field-content
+														input(type="text" required="required", placeholder=" ", id="snils")
+														label.calc-form__label(for='snils') СНИЛС*
+									
+									.calc__sect
+										.calc__title-wrap
+											.calc__title Адрес постоянной регистрации 
+											.calc-tag +10%
+
+										.calc-form.js-calc-form
+											.calc-form__content
+												.calc-form__field.js-calc-form-field
+													.calc-form__field-content
+														input(type="text", placeholder=" ", id="index")
+														label.calc-form__label(for='index') Индекс
+
+												.calc-form__field.js-calc-form-field(data-error='Укажите регион')
+													.calc-form__field-content
+														input(type="text", required="required", placeholder=" ", id="region")
+														label.calc-form__label(for='region') Регион*
+
+												.calc-form__field.js-calc-form-field(data-error='Укажите улицу')
+													.calc-form__field-content
+														input(type="text", required="required", placeholder=" ", id="street")
+														label.calc-form__label(for='street') Улица*
+
+												.calc-form__field.calc-form__field_quarter.js-calc-form-field(data-error='Укажите дом')
+													.calc-form__field-content
+														input(type="text" required="required", placeholder=" ", id="house")
+														label.calc-form__label(for='house') Дом*
+
+												.calc-form__field.calc-form__field_quarter.js-calc-form-field
+													.calc-form__field-content
+														input(type="text", placeholder=" ", id="corpus")
+														label.calc-form__label(for='corpus') Корпус
+
+												.calc-form__field.calc-form__field_quarter.js-calc-form-field
+													.calc-form__field-content
+														input(type="text", placeholder=" ", id="building")
+														label.calc-form__label(for='building') Строение
+
+												.calc-form__field.calc-form__field_quarter.js-calc-form-field
+													.calc-form__field-content
+														input(type="text", placeholder=" ", id="flat")
+														label.calc-form__label(for='flat') Квартира
+									
+									.calc__sect
+										.calc__title-wrap
+											.calc__title Адрес фактического проживания
+
+										.calc-form.js-calc-form
+											.calc-form__content
+												.calc-form__field.js-calc-form-field
+													.calc-form__field-content
+														.input-check.input-check_circle.input-check_green.js-input-check
+															input#check-address(type='checkbox', checked='checked')
+															label.input-check__label(for='check-address')
+																span.input-check__mark
+																	+svg('ic-tick','ic-tick', '14', '12')
+																span.input-check__text.js-input-check-text Совпадает с адресом регистрации
+
+									.calc__sect
+										.calc__title-wrap
+											.calc__title Дополнительный телефон 
+											.calc-tag +10%
+
+										.calc-form.js-calc-form
+											.calc-form__text Введите номер, отличный от мобильного: +7 (923) 176-36-47
+
+											.calc-form__content
+												.calc-form__field.calc-form__field_half.js-calc-form-field(data-error='Укажите дополнительный телефон')
+													.calc-form__field-content
+														input(type="text", class="js-phone", required="required", placeholder=" ", id="add-phone")
+														label.calc-form__label(for='add-phone') Дополнительный телефон*
+
+												.calc-form__field.calc-form__field_half.js-calc-form-field
+													.calc-form__field-content
+														input(type="text", placeholder=" ", id="phone-owner")
+														label.calc-form__label(for='phone-owner') Владелец телефона
+								
+								.calc__item.js-calc-item(data-step='3', data-percent='9')
+									.calc__head
+										.calc__head-info
+											.calc__title Место работы
+											.calc-tag +10%
+
+										.calc__step Шаг 3 из 4
+
+									.calc__sect
+										.calc-choose.js-calc-choose
+											.calc-choose__top
+												.calc-choose__info
+													.calc-choose__label Выберите тип занятости*
+													.calc-choose__val.js-calc-choose-val
+
+												.calc-choose__arr
+													+svg('ic-arrow-down','ic-arrow-down', '14', '8')
+											
+											.calc-choose__content
+												-
+													var list=[
+														{label:'Пенсионер', text:'По возрасту/стажу работы'},
+														{label:'Пенсионер', text:'По инвалидности'},
+														{label:'Ищу работу'},
+														{label:'Содержит муж/жена'},
+														{label:'Другое', other:'true'},
+													]
+												each item, index in list
+													.calc-choose-item
+														if(item.other)
+															input(type='radio' name='employment', id='choose'+index, class='js-calc-choose-radio', value=item.label, data-other='true')
+														else
+															input(type='radio' name='employment', id='choose'+index, class='js-calc-choose-radio', value=item.label)
+														label.calc-choose-item__label(for='choose'+index)
+															.calc-choose-item__content
+																.calc-choose-item__title= item.label
+																if(item.text)
+																	.calc-choose-item__text= item.text
+															.calc-choose-item__mark
+											
+											.calc-choose__other.js-calc-choose-other
+												textarea(placeholder=" ", id="desc-employment")
+												label.calc-choose__other-label(for='desc-employment') Тип занятости
+
+								.calc__item.js-calc-item(data-step='4', data-percent='9')
+									.calc__head
+										.calc__head-info
+											.calc__title Подтвердите мобильный телефон
+											.calc-tag +10%
+
+										.calc__step Шаг 4 из 4
+
+									.calc__sect
+										.calc-sms.js-calc-sms
+											.calc-form.js-calc-form
+												.calc-form__text Код подтверждения отправлен вам на номер: +7 (923) 176-36-47
+
+												.calc-form__content
+													.calc-form__field.calc-form__field_half.js-calc-form-field(data-error='Укажите код из смс')
+														.calc-form__field-content
+															input(type="password", required="required", placeholder=" ", id="sms", maxlength='3')
+															label.calc-form__label(for='sms') Код из смс
+
+
+								.calc-bottom
+									.calc-bottom__cond
+										.input-check.input-check_circle.js-input-check(data-error='Примите условия')
+											input#check-info(type='checkbox', checked='checked', required="required")
+											label.input-check__label(for='check-info')
+												span.input-check__mark
+													+svg('ic-tick','ic-tick', '14', '12')
+												span.input-check__text.js-input-check-text Я принимаю условия передачи информации
+
+										.input-check.input-check_circle.js-input-check(data-error='Ознакомьтесь с документаи')
+											input#check-doc(type='checkbox', required="required")
+											label.input-check__label(for='check-doc')
+												span.input-check__mark
+													+svg('ic-tick','ic-tick', '14', '12')
+												span.input-check__text.js-input-check-text Я ознакомлен(а) с приведёнными ниже документами
+
+									.calc-back
+										.calc-back__icon
+											+svg('ic-prev','ic-prev', '15', '14')
+										.calc-back__text Назад
+
+									.calc-bottom__btn
+										span.btn.js-btn-next Далее
+
+							.calc-total
+								.calc-total__top
+									.calc-total__label Сумма:
+									.calc-total__price 5170 
+										span.calc-total__currency руб
+
+								.calc-progress
+									.calc-progress__label Вероятность одобрения
+
+									.calc-progress__val 5%
+									
+									.calc-progress-line
+										.calc-progress-line__probably.js-calc-progress-line-probably
+										.calc-progress-line__cur.js-calc-progress-line-cur
+
+									.calc-progress__note +50% за 1-й шаг
+
+						.calc-success
+							.calc-success__title Заявка отправлена
+							.calc-success__text Спасибо за обращение!
+								br
+								|В ближайшее время наш менеджер свяжется с Вами.
+							.calc-success__note В случае одобрения кредита на ваш телефонный номер  и электронную почту постутит соответствующая информация 
+
+							a.btn(href="/calc.html") Закрыть
+
+						.calc__docs
+							.h2 Ссылки на документы
+
+							.docs-list.docs-list_half
+								-
+									var list=[
+										{text:'Правила предоставления онлайн займов', size:'863.53 KB'},
+										{text:'Общие условия договора онлайн займа', size:'863.53 KB'},
+										{text:'Информация об условиях предоставления РФ', size:'11.81 Кб'},
+										{text:'Положение о защите персональных данных', size:'863.53 KB'},
+										{text:'Политика в отношении обработки и защиты персональных данных', size:'863.53 KB'},
+									]
+
+								each item in list
+									.doc
+										.doc__content
+											.doc__icon
+												+svg('ic-pdf','ic-pdf', '27', '26')
+
+											.doc__info
+												span.doc__text= item.text
+												span.doc__size= item.size
+
+										a(href="#").doc__down
+											+svg('ic-download','ic-download', '14', '18')
+
+	include ../components/mark

@@ -117,8 +117,17 @@ block content
 				br
 				br
 				.input-check.input-check_circle
-					input#check1(type='checkbox')
-					label.input-check__label(for='check1')
+					input#check2(type='checkbox')
+					label.input-check__label(for='check2')
+						span.input-check__mark
+							+svg('ic-tick','ic-tick', '14', '12')
+						span.input-check__text Текст
+
+				br
+				br
+				.input-check.input-check_circle.input-check_green
+					input#check2(type='checkbox')
+					label.input-check__label(for='check2')
 						span.input-check__mark
 							+svg('ic-tick','ic-tick', '14', '12')
 						span.input-check__text Текст
@@ -250,3 +259,8 @@ block content
 						.type-icon__img
 							+svg('ic-tick','ic-tick', '14', '12')
 						.type-icon__name ic-tick
+
+					.type-icon__item
+						.type-icon__img
+							+svg('ic-download','ic-download', '14', '18')
+						.type-icon__name ic-download
