@@ -335,6 +335,19 @@ if($('.js-calc-choose').length){
 }
 
 // Задаем проценты (вероятность одобрения)
+if($('.js-calc').length){
+	var countStep = $('.js-calc-item').length;
+	var curStep = $('.js-calc-item.active').data('step');
+	var curPercent = $('.js-calc-item[data-step=1]').data('cur-percent')
+	var addPercent = $('.js-calc-item[data-step=1]').data('add-percent')
+
+	$('.js-calc-progress-val').text(curPercent);
+	$('.js-calc-progress-line-cur').css('width', curPercent+'%')
+	$('.js-calc-progress-line-probably').css('width', curPercent+addPercent+'%')
+	$('.js-calc-progress-add').text(addPercent);
+	$('.js-calc-progress-step').text(curStep);
+}
+
 if($('.js-calc-progress-line-cur').length){
 	$('.js-calc-progress-line-cur').css('width', $('.js-calc-item:first-child').data('cur-percent')+'%')
 	$('.js-calc-progress-line-probably').css('width', $('.js-calc-item:first-child').data('percent')+'%')
@@ -342,16 +355,40 @@ if($('.js-calc-progress-line-cur').length){
 
 // Валидация форм
 if($('.js-calc-form').length){
-	$('.js-calc-item').on('click', '.js-btn-next', function(e){
-		var $form = $(this).closest('.js-calc-item');
+	$('.js-calc').on('click', '.js-btn-next', function(e){
+		var $form = $('.js-calc-item.active');
+
 		errorField($form, e);
+	});
+
+	$('.js-calc').on('click', '.js-calc-back', function(e){
+		curStep--;
+
+		if(curStep == 1){
+			$('.js-calc-bottom-cond').removeClass('inactive');
+			$('.js-calc-back').removeClass('active');
+		}
+
+		$('.js-calc-item').removeClass('active');
+		$('.js-calc-item[data-step='+curStep+']').addClass('active');
+
+		$('body,html').animate({scrollTop:$('.js-calc-item.active').offset().top-50},300);
+
+		curPercent = curPercent - $('.js-calc-item.active').data('add-percent');
+		addPercent = $('.js-calc-item.active').data('add-percent')
+
+		$('.js-calc-progress-val').text(curPercent);
+		$('.js-calc-progress-line-cur').css('width', curPercent+'%')
+		$('.js-calc-progress-line-probably').css('width', curPercent+addPercent+'%')
+		$('.js-calc-progress-add').text(addPercent);
+		$('.js-calc-progress-step').text(curStep);
 	});
 
 	$('.js-calc-item').find('input,textarea,select').on('change', function() {
 		var $curField = $(this).closest('.js-calc-form-field');
 
 		if($curField.hasClass('error')){
-			if($(this).val().length > 0){
+			if($(this).val().length > 0 || ($(this).attr('id') == 'sms' && $(this).val().length == 3)){
 				$curField.removeClass('error');
 				$curField.addClass('success');
 			}
@@ -360,8 +397,12 @@ if($('.js-calc-form').length){
 }
 
 function errorField(form, event) {
+	event.preventDefault();
+
 	form.find('.js-calc-form-field').removeClass('error');
 	form.find('.calc-form-msg-error').remove();
+	$('.js-calc-bottom-cond').find('.calc-form-msg-error').remove();
+	$('.js-calc-choose').find('.calc-form-msg-error').remove();
 	
 	form.find('input[type=email]').each(function(){
 		var email = $(this).val();
@@ -371,7 +412,7 @@ function errorField(form, event) {
 		if (!pattern.test(email) && (email.length > 1)) {
 			$curField.addClass('error');
 
-			if($curField.data('error')  === 'undefined'){
+			if($curField.data('error')  === undefined){
 				$curField.append('<div class="calc-form-msg-error">Укажите корректный E-mail</div>')
 			}else{
 				$curField.append('<div class="calc-form-msg-error">'+$curField.data('error')+'</div>')
@@ -381,36 +422,76 @@ function errorField(form, event) {
 
 
 	form.find('input,textarea,select').filter('[required]').each(function(){
-		if($(this).val().length < 1){
+		if(($(this).val().length < 1) || ($(this).attr('type') == 'checkbox' && !$(this).prop('checked')) || ($(this).attr('id') == 'sms' && $(this).val().length < 3)){
 			var $curField = $(this).closest('.js-calc-form-field');
 			$curField.addClass('error');
 
-			if($curField.data('error')  === 'undefined'){
+			if($curField.data('error')  === undefined){
 				$curField.append('<div class="calc-form-msg-error">Заполните поле</div>')
 			}else{
 				$curField.append('<div class="calc-form-msg-error">'+$curField.data('error')+'</div>')
 			}
 		}
+	});
 
-		if($(this).attr('type') == 'checkbox' && !$(this).prop('checked')){
-			var $curCheck = $(this).closest('.js-input-check');
-
-			if($curCheck.data('error')  === 'undefined'){
-				$curCheck.find('.js-input-check-text').append('<div class="calc-form-msg-error">Заполните поле</div>')
+	form.find('.js-calc-choose').each(function(){
+		if($(this).find('input[type=radio]:checked').length < 1){
+			if($(this).data('error') === undefined){
+				$(this).append('<div class="calc-form-msg-error">Заполните поле</div>')
 			}else{
-				$curCheck.find('.js-input-check-text').append('<div class="calc-form-msg-error">'+$curCheck.data('error')+'</div>')
+				$(this).append('<div class="calc-form-msg-error">'+$(this).data('error')+'</div>')
 			}
-
 		}
 	});
 
+	if(!$('.js-calc-bottom-cond').hasClass('inactive')){
+		$('.js-calc-bottom-cond').find('input').filter('[required]').each(function(){
+			if($(this).attr('type') == 'checkbox' && !$(this).prop('checked')){
+				var $curCheck = $(this).closest('.js-input-check');
+	
+				if($curCheck.data('error')  === undefined){
+					$curCheck.find('.js-input-check-text').append('<div class="calc-form-msg-error">Заполните поле</div>')
+				}else{
+					$curCheck.find('.js-input-check-text').append('<div class="calc-form-msg-error">'+$curCheck.data('error')+'</div>')
+				}
+			}
+		});
+	}
 
+	if(form.find('.calc-form-msg-error').length == 0 && $('.js-calc-bottom-cond').find('.calc-form-msg-error').length == 0){
+		if(curStep == countStep){
+			// $('.js-calc').submit();
 
+			$('.js-calc-wrap').addClass('inactive');
+			$('.js-calc-docs').addClass('inactive');
+			$('.js-calc-success').addClass('active');
+			$('.js-calc').reset();
 
+		}else{
+			// event.preventDefault();
+			curPercent = curPercent + $('.js-calc-item.active').data('add-percent');
+			
+			if(curStep == 1){
+				$('.js-calc-bottom-cond').addClass('inactive');
+				$('.js-calc-back').addClass('active');
+			}
 
-	// if(form.find('.js-form-site-item.error').length){
-	// 	event.preventDefault();
-	// }
+			curStep++;
+	
+			$('.js-calc-item').removeClass('active');
+			$('.js-calc-item[data-step='+curStep+']').addClass('active');
+	
+			$('body,html').animate({scrollTop:$('.js-calc-item.active').offset().top-50},300);
+
+			addPercent = $('.js-calc-item.active').data('add-percent')
+
+			$('.js-calc-progress-val').text(curPercent);
+			$('.js-calc-progress-line-cur').css('width', curPercent+'%')
+			$('.js-calc-progress-line-probably').css('width', curPercent+addPercent+'%')
+			$('.js-calc-progress-add').text(addPercent);
+			$('.js-calc-progress-step').text(curStep);
+		}
+	}
 }
 
 // Маска для телефона

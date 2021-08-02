@@ -63,6 +63,11 @@
 
 		.h2, h2{margin-bottom: 18px;}
 	}
+
+	&__docs.inactive,
+	&__wrap.inactive{
+		display: none;
+	}
 }
 
 .calc-range{
@@ -383,6 +388,7 @@
 	.input-check:not(:last-child){margin-bottom: 18px;}
 
 	&__cond{margin-right: 30px;}
+	&__cond.inactive{display: none;}
 }
 
 .calc-total{
@@ -425,8 +431,9 @@
 
 	&__note{
 		@include font(normal, normal, 1.4rem, 1.2, #909090);
-		margin-top: 15px;
 	}
+
+	&__bottom{margin-top: 15px;}
 }
 
 .calc-progress-line{
@@ -666,4 +673,291 @@
 
 	&:hover &__icon{background: $color-dark-green;}
 	&:hover &__icon .icon{fill: #fff;}
+}
+
+@media (max-width: 1239px) {
+	.calc-total{width: 300px;}
+
+	.calc{
+		padding: 35px 30px;
+
+		&__content{width: calc(100% - 330px);}
+	}
+}
+
+@media (max-width: 991px) {
+	.calc{
+		padding: 0;
+		background: transparent;
+
+		&__wrap{flex-direction: column-reverse;}
+
+		&__content,
+		&__docs{
+			width: 100%;
+			padding: 30px;
+			background: #fff;
+		}
+
+		&__docs{margin-top: 0;}
+	}
+
+	.calc-total{
+		width: 100%;
+		margin-bottom: 50px;
+	}
+}
+
+@media (max-width: 767px) {
+	.calc-progress{
+		&__top{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		&__label{font-size: 1.6rem;}
+		&__val{font-size: 1.8rem;}
+
+		&__bottom{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-top: 12px;
+		}
+	}
+
+	.calc-progress-sum{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		&__label{
+			@include font(normal, normal, 1.4rem, 1.2, $color-text);
+			margin-right: 10px;
+		}
+	
+		&__price{
+			@include font(normal, bold, 1.8rem, 1.2, $color-text);
+		}
+	
+		&__currency{
+			font-size: 1.4rem;
+			font-weight: normal;
+		}
+	}
+
+	.calc{
+		&__content,
+		&__docs{
+			width: auto;
+			margin-left: -20px;
+			margin-right: -20px;
+			padding: 43px 20px;
+		}
+
+		&__step{display: none;}
+
+		&__head &__title{
+			font-size: 2rem;
+			margin-right: 0;
+		}
+
+		&__title{font-size: 2rem;}
+		&__sect:not(:last-child){margin-bottom: 50px;}
+
+		&__docs{
+			.docs-list{margin-bottom: 0;}
+
+			.doc{
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				&__icon{display: none;}
+
+				&__down{
+					flex: 0 0 30px;
+					width: 30px;
+					height: 30px;
+
+					.icon{
+						max-height: 11px;
+						max-width: 11px;
+					}
+				}
+			}
+		}
+	}
+
+	.calc-range{
+		padding: 27px 16px;
+		margin-bottom: 20px;
+
+		&__top{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 10px;
+		}
+
+		&__label{
+			font-size: 1.6rem;
+			margin-bottom: 0;
+			margin-right: 30px;
+		}
+
+		&__field{
+			font-size: 1.8rem;
+			margin-bottom: 0;
+		}
+
+		&__currency{font-size: 1.6rem;}
+		&__icon{display: none;}
+
+		.slider.slider-horizontal .slider-tick-label-container .slider-tick-label{display: none;}
+		.slider.slider-horizontal{margin-bottom: 25px !important;}
+		.slider.slider-horizontal .slider-tick-label-container{margin-top: 33px;}
+
+		.slider.slider-horizontal .slider-tick-label-container .slider-tick-label:first-child,
+		.slider.slider-horizontal .slider-tick-label-container .slider-tick-label:last-child{
+			display: block;
+		}
+	}
+
+	.calc-total{margin-bottom: 35px;}
+
+	.calc-select{
+		&__label{font-size: 1.4rem;}
+		&.active &__label{font-size: 1.2rem;}
+
+		&__val{
+			font-size: 1.4rem;
+			margin-top: 0;
+		}
+
+		&__field{
+			min-height: 4.5rem;
+			padding: 5px 16px;
+		}
+	}
+
+	.calc-form{
+		input[type="text"],
+		input[type="email"],
+		input[type="number"],
+		input[type="password"],
+		textarea{
+			height: 4.5rem;
+			font-size: 1.4rem;
+			padding: 15px 16px 0;
+		}
+
+		input[type="text"]:focus + &__label,
+		input[type="number"]:focus + &__label,
+		input[type="email"]:focus + &__label,
+		input[type="password"]:focus + &__label,
+		textarea:focus + &__label,
+		input[type="text"]:not(:placeholder-shown) + &__label,
+		input[type="number"]:not(:placeholder-shown) + &__label,
+		input[type="email"]:not(:placeholder-shown) + &__label,
+		input[type="password"]:not(:placeholder-shown) + &__label,
+		textarea:not(:placeholder-shown) + &__label{
+			height: 1.5rem;
+			font-size: 1.2rem;
+			line-height: 1.5rem;
+			top: 7px
+		}
+
+		&__label{
+			font-size: 1.4rem;
+			line-height: 4.3rem;
+			padding: 0 16px;
+		}
+
+		&__field_half,
+		&__field_quarter{
+			width: calc(100% - 20px);
+		}
+
+		&__text{font-size: 1.4rem;}
+	}
+
+	.calc-form-msg-error{
+		font-size: 1.2rem;
+		margin-top: 10px;
+	}
+
+	.calc-tag{font-size: 1.2rem;}
+
+	.calc-bottom{
+		flex-wrap: wrap;
+		padding-top: 0;
+		padding-bottom: 0;
+		border-top: 0;
+		margin-top: 40px;
+
+		&__cond{
+			width: 100%;
+			margin-right: 0;
+			margin-bottom: 30px;
+		}
+	}
+
+	.calc-choose{
+		&__top{
+			min-height: 4.5rem;
+			padding: 5px 16px;
+		}
+
+		&__label,
+		&__val{
+			font-size: 1.4rem;
+		}
+
+		&.active &__label{font-size: 1.2rem;}
+		&__val{margin-top: 0;}
+		
+		&__other-label{
+			font-size: 1.4rem;
+			padding: 0 16px;
+		}
+
+		&__other{
+			textarea{
+				font-size: 1.4rem;
+				padding: 25px 16px 10px;
+			}
+		}
+
+		textarea:focus + &__other-label,
+		textarea:not(:placeholder-shown) + &__other-label{
+			height: 1.6rem;
+			font-size: 1.2rem;
+			line-height: 1.6rem;
+		}
+	}
+
+	.calc-choose-item{
+		width: calc(100% - 20px);
+		&__label{padding: 5px 16px;}
+		&__title{font-size: 1.4rem;}
+		&__text{font-size: 1.2rem;}
+	}
+
+	.calc-success{
+		padding: 30px 20px;
+
+		&__title{font-size: 2rem;}
+
+		&__text{
+			font-size: 1.6rem;
+			margin-top: 20px;
+		}
+
+		&__note{
+			font-size: 1.4rem;
+			line-height: 1.5;
+		}
+	}
 }

@@ -62,3 +62,9 @@
 	&_circle.input-check_green &__mark{border-color: $color-dark-green;}
 	&_circle.input-check_green input[type=checkbox]:checked + &__label &__mark{background: $color-dark-green;}
 }
+
+@media (max-width: 767px) {
+	.input-check{
+		&__label{font-size: 1.4rem;}
+	}
+}

@@ -40,3 +40,12 @@
 	&__label:hover{color: $color-dark-green;}
 	input[type=radio]:checked + &__label &__mark{background: $color-dark-green;}
 }
+
+@media (max-width: 767px) {
+	.input-radio{
+		&__label{font-size: 1.4rem;}
+		&__popup{padding: 30px;}
+		&__text{margin-left: 15px;}
+		&__item:not(:last-child){margin-bottom: 18px;}
+	}
+}

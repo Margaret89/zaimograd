@@ -18,10 +18,10 @@ block content
 		.container
 			.row
 				.col-12
-					form.calc
-						.calc__wrap
+					form.calc.js-calc
+						.calc__wrap.js-calc-wrap
 							.calc__content
-								.calc__item.active.js-calc-item(data-step='1', data-cur-percent='5', data-percent='35')
+								.calc__item.active.js-calc-item(data-step='1', data-cur-percent='5', data-add-percent='35')
 									.calc__head
 										.calc__head-info
 											.calc__title Заполнение заявки
@@ -29,12 +29,13 @@ block content
 
 									.calc__sect
 										.calc-range.js-calc-range
-											.calc-range__label Желаемая сумма:
-											.calc-range__field.js-calc-range-field
-												span.calc-range__val.js-calc-range-val(contenteditable="true") 0
-												span.calc-range__currency &nbsp;руб.
-												span.calc-range__icon
-													+svg('ic-edit','ic-edit', '18', '16')
+											.calc-range__top
+												.calc-range__label Желаемая сумма:
+												.calc-range__field.js-calc-range-field
+													span.calc-range__val.js-calc-range-val(contenteditable="true") 0
+													span.calc-range__currency &nbsp;руб.
+													span.calc-range__icon
+														+svg('ic-edit','ic-edit', '18', '16')
 
 											input(type='text' name='prices' data-provide='slider' data-slider-ticks="[1000, 5000, 10000, 30000, 50000]" data-slider-ticks-labels='["1 000", "5 000", "10 000", "30 000", "50 000"]' data-slider-tooltip="hide" data-slider-min='1000' data-slider-max='50000' data-slider-value='5170' data-slider-ticks-positions="[0, 25, 50, 75, 100]" class="js-calc-range-input")
 
@@ -96,7 +97,7 @@ block content
 														label.calc-form__label(for='email') Электронная почта
 														.calc-tag +10%
 											
-								.calc__item.js-calc-item(data-step='2', data-percent='35')
+								.calc__item.js-calc-item(data-step='2', data-add-percent='35')
 									.calc__head
 										.calc__head-info
 											.calc__title Паспортные данные
@@ -218,7 +219,7 @@ block content
 														input(type="text", placeholder=" ", id="phone-owner")
 														label.calc-form__label(for='phone-owner') Владелец телефона
 								
-								.calc__item.js-calc-item(data-step='3', data-percent='9')
+								.calc__item.js-calc-item(data-step='3', data-add-percent='9')
 									.calc__head
 										.calc__head-info
 											.calc__title Место работы
@@ -227,7 +228,7 @@ block content
 										.calc__step Шаг 3 из 4
 
 									.calc__sect
-										.calc-choose.js-calc-choose
+										.calc-choose.js-calc-choose(data-required='true', data-error='Укажите тип занятости')
 											.calc-choose__top
 												.calc-choose__info
 													.calc-choose__label Выберите тип занятости*
@@ -262,7 +263,7 @@ block content
 												textarea(placeholder=" ", id="desc-employment")
 												label.calc-choose__other-label(for='desc-employment') Тип занятости
 
-								.calc__item.js-calc-item(data-step='4', data-percent='9')
+								.calc__item.js-calc-item(data-step='4', data-add-percent='9')
 									.calc__head
 										.calc__head-info
 											.calc__title Подтвердите мобильный телефон
@@ -281,9 +282,8 @@ block content
 															input(type="password", required="required", placeholder=" ", id="sms", maxlength='3')
 															label.calc-form__label(for='sms') Код из смс
 
-
 								.calc-bottom
-									.calc-bottom__cond
+									.calc-bottom__cond.js-calc-bottom-cond
 										.input-check.input-check_circle.js-input-check(data-error='Примите условия')
 											input#check-info(type='checkbox', checked='checked', required="required")
 											label.input-check__label(for='check-info')
@@ -298,7 +298,7 @@ block content
 													+svg('ic-tick','ic-tick', '14', '12')
 												span.input-check__text.js-input-check-text Я ознакомлен(а) с приведёнными ниже документами
 
-									.calc-back
+									.calc-back.js-calc-back
 										.calc-back__icon
 											+svg('ic-prev','ic-prev', '15', '14')
 										.calc-back__text Назад
@@ -307,23 +307,31 @@ block content
 										span.btn.js-btn-next Далее
 
 							.calc-total
-								.calc-total__top
+								.calc-total__top.d-none.d-md-flex
 									.calc-total__label Сумма:
 									.calc-total__price 5170 
 										span.calc-total__currency руб
 
 								.calc-progress
-									.calc-progress__label Вероятность одобрения
+									.calc-progress__top
+										.calc-progress__label Вероятность одобрения
 
-									.calc-progress__val 5%
+										.calc-progress__val 
+											span.js-calc-progress-val 5
+											|%
 									
 									.calc-progress-line
 										.calc-progress-line__probably.js-calc-progress-line-probably
 										.calc-progress-line__cur.js-calc-progress-line-cur
 
-									.calc-progress__note +50% за 1-й шаг
+									.calc-progress__bottom
+										.calc-progress__note +<span class="js-calc-progress-add">50</span>% за <span class="js-calc-progress-step">1</span>-й шаг
+										.calc-progress-sum
+											.calc-progress-sum__label Сумма:
+											.calc-progress-sum__price 5170 
+												span.calc-progress-sum__currency руб
 
-						.calc-success
+						.calc-success.js-calc-success
 							.calc-success__title Заявка отправлена
 							.calc-success__text Спасибо за обращение!
 								br
@@ -332,7 +340,7 @@ block content
 
 							a.btn(href="/calc.html") Закрыть
 
-						.calc__docs
+						.calc__docs.js-calc-docs
 							.h2 Ссылки на документы
 
 							.docs-list.docs-list_half

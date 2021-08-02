@@ -14,11 +14,11 @@
 
 		.doc,
 		.doc:not(:last-child){
-			width: calc(50% - 20px);
 			margin: 10px;
 		}
-
+		
 		.doc{
+			width: calc(50% - 20px);
 			align-items: center;
 			padding: 37px 43px;
 
@@ -99,6 +99,13 @@
 
 @media (max-width: 991px) {
 	.doc{padding: 20px;}
+
+	.docs-list{
+		&_half .doc{
+			width: calc(100% - 20px);
+			padding: 20px;
+		}
+	}
 }
 
 @media (max-width: 767px) {
