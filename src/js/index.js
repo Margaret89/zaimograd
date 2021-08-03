@@ -303,6 +303,13 @@ if($('.js-calc-select-field').length){
 		$parent.addClass('active');
 		$parent.find('.js-calc-select-val').text($(this).val());
 	});
+
+	$(document).on('click', function(event) {
+		if ($(event.target).closest(".js-calc-select").length) return;
+		$('.js-calc-select').removeClass('open');
+		$('.js-calc-select-popup').slideUp(300);
+		event.stopPropagation();
+	});
 }
 
 // select (без поппапа)
